@@ -4,19 +4,19 @@ app.controller('loginCtrl', ['$scope', '$route', 'authFactory', function($scope,
 
   $scope.googleLogin = () => {
     authFactory.authWithProvider(authFactory.googleProvider)
-      .then((result) => { $route.reload(); console.log("logged in user google:", result.user.uid)})
+      .then((result) => { $route.reload(); console.log("logged in user google:", result.user.uid); })
       .catch((err) => console.log(err));
   };
 
   $scope.newEmail = function () {
     authFactory.createWithEmail($scope.email, $scope.password)
-    .then((result) =>  {$route.reload(); console.log("signed up user email:", result.uid)})
+    .then((result) =>  { $route.reload(); console.log("signed up user email:", result.uid); })
     .catch((err) => console.log(err));
   };
 
   $scope.existingEmail = function () {
     authFactory.authWithEmail($scope.email, $scope.password)
-    .then((result) =>  {$route.reload(); console.log("logged in user email:", result.uid)})
+    .then((result) =>  { $route.reload(); console.log("logged in user email:", result.uid); })
     .catch((err) => console.log(err));
   };
 
