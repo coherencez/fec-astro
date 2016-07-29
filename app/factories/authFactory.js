@@ -55,7 +55,9 @@ app.factory('authFactory', [function () {
 app.run(["$location", "FBCreds", "authFactory", function ($location, FBCreds, authFactory) {
   const authConfig = {
     apiKey: FBCreds.apiKey,
-    authDomain: FBCreds.authDomain
+    authDomain: FBCreds.authDomain,
+    databaseURL: FBCreds.databaseURL,
+    storageBucket: FBCreds.storageBucket
   };
 
   firebase.initializeApp(authConfig);
