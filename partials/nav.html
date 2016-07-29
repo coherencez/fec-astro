@@ -9,7 +9,7 @@
         <li class="nav-link"><a href="javascript:void(0)">Photos</a></li>
         <li class="nav-link"><a href="javascript:void(0)">Profile</a></li>
         <li class="nav-link logo">
-          <a href="javascript:void(0)" class="logo">
+          <a href="javascript:void(0)" class="logo" data-ng-href="#/splash">
             <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
           </a>
         </li>
@@ -31,7 +31,7 @@
             </li>
           </ul> -->
         </li>
-        <li class="nav-link" data-ng-show="!currentUser"><a href="javascript:void(0)">Sign up/Login</a></li>
+        <li class="nav-link" data-ng-show="!currentUser"><a href="javascript:void(0)" data-ng-href="#/login">Sign up/Login</a></li>
         <li class="nav-link" data-ng-show="currentUser"><a href="javascript:void(0)">Logout</a></li>
       </ul>
     </nav>

@@ -9,5 +9,9 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl: 'partials/loginView.html',
       controller: 'loginCtrl'
     })
+    .when('/splash', {
+      templateUrl: '/partials/defaultView.html',
+      controller: 'defaultCtrl'
+    })
     .otherwise('/login')
 }]);
