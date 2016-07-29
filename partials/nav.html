@@ -31,8 +31,8 @@
             </li>
           </ul> -->
         </li>
-        <li class="nav-link" data-ng-show="!currentUser"><a href="javascript:void(0)" data-ng-href="#/login">Sign up/Login</a></li>
-        <li class="nav-link" data-ng-show="currentUser"><a href="javascript:void(0)">Logout</a></li>
+        <li class="nav-link"><a href="javascript:void(0)" data-ng-show="!loginStatus()" data-ng-href="#/login">Sign Up/Login</a></li>
+        <li class="nav-link"><a href="javascript:void(0)" data-ng-show="loginStatus()" data-ng-click="logout()">Logout</a></li>
       </ul>
     </nav>
   </div>

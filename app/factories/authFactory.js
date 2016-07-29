@@ -13,6 +13,7 @@ app.factory('authFactory', [function () {
   const userState = function() {
     return (currentUserId) ? true : false;
   };
+  window.userState = userState;
 
   //getUser function returns current userId
   const getUser = function() {
