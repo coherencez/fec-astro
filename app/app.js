@@ -4,4 +4,10 @@ const app = angular.module("AstroApp", ['ngRoute', 'ngAnimate'])
 
 app.config(['$routeProvider', function ($routeProvider) {
   // routing here
+  $routeProvider
+    .when('/login', {
+      templateUrl: 'partials/loginView.html',
+      controller: 'loginCtrl'
+    })
+    .otherwise('/login')
 }]);
