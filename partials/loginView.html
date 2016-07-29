@@ -1,1 +1,21 @@
-
+<div class="row">
+  <div class="loginDisplay">
+    <header class="loginHeader">
+      <h3>Please login or sign up below!</h3>
+    </header>
+    <section class="loginByEmailGroup">
+      <label for="email">Email:</label>
+        <input type="email" name="email" id="emailInput" class="loginInputs" required data-ng-model="email"/>
+      <label for="password">Password:</label>
+        <input type="password" name="password" id="passwordInput" class="loginInputs" required data-ng-model="password"/>
+      <button type="button" name="signup" data-ng-click="dummy()">Sign Up</button>
+      <button type="button" name="login" data-ng-click="dummy()">Login</button>
+    </section>
+    <section class="or">
+      <h6>or</h6>
+    </section>
+    <section class="loginByOAuthGroup">
+       <a href="#!" data-ng-click="dummy()" class="googleImgLink"><img src="https://online.cameyo.com/Images/SignInGoogle.png" id="googleImg"/></a>
+    </section>
+  </div>
+</div>

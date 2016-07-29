@@ -20,6 +20,7 @@
   min-height: $centered-navigation-height;
   width: 100%;
   z-index: 9999;
+  @include position(fixed, 0 null null null)
 
   // Mobile view
 

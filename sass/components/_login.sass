@@ -1,0 +1,36 @@
+$primary-color: grey
+$border-color: black
+
+.row
+  @include outer-container
+
+  .loginDisplay
+    @include span-columns(6)
+    @include shift(3)
+    background: lighten($primary-color, 30%)
+    border: 2px solid $border-color
+    margin-top: 10%
+
+    .loginHeader
+      text-align: center
+
+    .loginByEmailGroup
+      text-align: center
+
+      .loginInputs
+        display: block
+        margin: 1% 0 1% 35%
+
+      button
+        display: inline-block
+        margin: 1%
+
+    .or
+      text-align: center
+
+    .loginByOAuthGroup
+      text-align: center
+
+      #googleImg
+        height: 54px
+        width: 246px
