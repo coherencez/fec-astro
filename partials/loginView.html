@@ -3,19 +3,33 @@
     <header class="loginHeader">
       <h3>Please login or sign up below!</h3>
     </header>
-    <section class="loginByEmailGroup">
+    <!-- <section class="loginByEmailGroup">
       <label for="email">Email:</label>
-        <input type="email" name="email" id="emailInput" class="loginInputs" required data-ng-model="email"/>
+        <input type="text" name="email" id="emailInput" class="loginInputs" required data-ng-model="email"/>
       <label for="password">Password:</label>
-        <input type="password" name="password" id="passwordInput" class="loginInputs" required data-ng-model="password"/>
-      <button type="button" name="signup" data-ng-click="newEmail()">Sign Up</button>
-      <button type="button" name="login" data-ng-click="existingEmail()">Login</button>
-    </section>
+        <input type="text" name="password" id="passwordInput" class="loginInputs" required data-ng-model="password"/>
+      <button type="button" name="signup" data-ng-click="newEmail()" class="loginButtons signUpButton">Sign Up</button>
+      <button type="button" name="login" data-ng-click="existingEmail()" class="loginButtons loginButton">Login</button>
+    </section> -->
+    <span class="input input--kuro loginInputs">
+			<input class="input__field input__field--kuro" type="email" id="input-7" required data-ng-model="email"/>
+			<label class="input__label input__label--kuro" for="input-7">
+				<span class="input__label-content input__label-content--kuro">Email:</span>
+			</label>
+		</span>
+		<span class="input input--kuro loginInputs">
+			<input class="input__field input__field--kuro" type="password" id="input-8" required data-ng-model="password"/>
+			<label class="input__label input__label--kuro" for="input-8">
+				<span class="input__label-content input__label-content--kuro">Password:</span>
+			</label>
+		</span>
+    <button type="button" name="signup" data-ng-click="newEmail()" class="loginButtons signUpButton">Sign Up</button>
+    <button type="button" name="login" data-ng-click="existingEmail()" class="loginButtons loginButton">Login</button>
     <section class="or">
       <h6>or</h6>
     </section>
     <section class="loginByOAuthGroup">
-       <a href="#!" data-ng-click="googleLogin()" class="googleImgLink"><img src="https://online.cameyo.com/Images/SignInGoogle.png" id="googleImg"/></a>
+       <a href="#!" data-ng-click="googleLogin()" class="googleImgLink"><img src="img/googleAuth.png" id="googleImg"/></a>
     </section>
   </div>
 </div>

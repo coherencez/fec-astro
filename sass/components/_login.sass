@@ -1,25 +1,26 @@
+
 .row
   @include outer-container
 
   .loginDisplay
     @include span-columns(6)
     @include shift(3)
-    background: lighten($primary-bg-color, 40%)
-    border: 2px solid orange
+    background: lighten($primary-bg-color, 10%)
+    border: 5px solid orange
+    margin-top: 2%
 
     .loginHeader
       text-align: center
 
-    .loginByEmailGroup
-      text-align: center
+    .loginInputs
+      margin-left: 15%
 
-      .loginInputs
-        display: block
-        margin: 1% 0 1% 35%
-
-      button
-        display: inline-block
-        margin: 1%
+    .loginButtons
+      display: inline-block
+      margin: 2%
+      position: relative
+      left: 140px
+      bottom: 20px
 
     .or
       text-align: center
@@ -28,5 +29,6 @@
       text-align: center
 
       #googleImg
-        height: 54px
-        width: 246px
+        height: 40px
+        width: 185px
+        margin: 2%
