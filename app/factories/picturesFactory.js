@@ -42,7 +42,7 @@ app.factory('picturesFactory', ['$q', '$http', 'FBCreds', function ($q, $http, F
 			getRandomDates();
   };
 
-  const getPicsForPicView = (x) => {
+  const getPicsForFirebase = (x) => {
     return $q((resolve, reject) => {
       $http.get(`https://api.nasa.gov/planetary/apod?concept_tags=true&date=${x.year}-${x.month}-${x.day}&api_key=${FBCreds.nasaApiKey}`)
         .success((dataObject) => {
@@ -64,6 +64,16 @@ app.factory('picturesFactory', ['$q', '$http', 'FBCreds', function ($q, $http, F
 
   const addToPictureList = newPic => firebase.database().ref('pictures').push(newPic);
 
+  const getPictures = (callback, userID) => {
+   firebase.database()
+    .ref('pictures')
+    // .orderByChild('uid')
+    // .equalTo(userID)
+    .on('value', (pictureData) => {
+        callback(pictureData.val());
+      });
+  };
+
   const deleteSong = songId => firebase.database().ref(`songs/${songId}`).remove();
 
   const rndNum = (little, big) => {
@@ -73,7 +83,8 @@ app.factory('picturesFactory', ['$q', '$http', 'FBCreds', function ($q, $http, F
 
 
   return {
-    getPicsForPicView, addToPictureList, getRandomDates, fillImgArray, clearArrays, dateArray, imgArray
+    getPicsForFirebase, addToPictureList, getRandomDates, fillImgArray, clearArrays, dateArray, imgArray,
+    getPictures
   };
 
 }]);
