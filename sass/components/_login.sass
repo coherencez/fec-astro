@@ -2,11 +2,21 @@
 .row
   @include outer-container
 
+  .potdHeader
+    background-color: $primary-bg-color
+    border-bottom: 3px solid lighten($primary-bg-color, 6%)
+    min-height: 60px
+    width: 100%
+    box-shadow: 0 2px 5px 0 rgba(255,255,255,.5)
+    @include position(relative, 10px 0 0 0)
+    vertical-align: middle
+    padding-top: 7px
+
   .loginDisplay
     @include span-columns(6)
     @include shift(3)
     background: lighten($primary-bg-color, 10%)
-    border: 5px solid orange
+    border: 5px solid $primary-border-color
     margin-top: 2%
 
     .loginHeader
