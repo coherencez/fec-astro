@@ -19,6 +19,7 @@ app.factory('authFactory', [function () {
   const getUser = function() {
     return currentUserId;
   };
+  window.getUser = getUser;
 
   const setUser = function(id) {
     currentUserId = id;

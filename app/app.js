@@ -10,10 +10,12 @@ app.config(['$routeProvider', function ($routeProvider) {
       controller: 'defaultCtrl'
     })
     .when('/pictures', {
-      templateUrl: 'partials/picturesView.html'
+      templateUrl: 'partials/picturesView.html',
+      controller: 'picturesCtrl'
     })
     .when('/profile', {
-      templateUrl: 'partials/profileView.html'
+      templateUrl: 'partials/profileView.html',
+      controller: 'profileCtrl'
     })
     .when('/login', {
       templateUrl: 'partials/loginView.html',
