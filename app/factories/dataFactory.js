@@ -1,15 +1,27 @@
 'use strict';
 
-app.factory('dataFactory', [ function () {
+app.factory('dataFactory', ['$q', '$http', 'FirebaseURL', function ($q, $http, fbUrl) {
 
-  const getPictures = (callback, userID) => {
-   firebase.database()
-    .ref('pictures')
-    // .orderByChild('uid')
-    // .equalTo(userID)
-    .on('value', (pictureData) => {
-        callback(pictureData.val());
-      });
+  // const getPictures = (callback, userID) => {
+  //  firebase.database()
+  //   .ref('pictures')
+  //   // .orderByChild('uid')
+  //   // .equalTo(userID)
+  //   .on('value', (pictureData) => {
+  //       callback(pictureData.val());
+  //     });
+  // };
+
+  const getPictures = () => {
+    return $q((resolve, reject) => {
+      $http.get(`${fbUrl}/pictures.json`)
+        .success((dataObject) => {
+          resolve(dataObject);
+        })
+        .error((error) => {
+          reject(error);
+        });
+    });
   };
 
   const addSong = newSong => firebase.database().ref('songs').push(newSong);

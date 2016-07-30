@@ -1,15 +1,11 @@
-$primary-color: grey
-$border-color: black
-
 .row
   @include outer-container
 
   .loginDisplay
     @include span-columns(6)
     @include shift(3)
-    background: lighten($primary-color, 30%)
-    border: 2px solid $border-color
-    margin-top: 10%
+    background: lighten($primary-bg-color, 40%)
+    border: 2px solid orange
 
     .loginHeader
       text-align: center

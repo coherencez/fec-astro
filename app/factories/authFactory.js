@@ -65,10 +65,10 @@ app.run(["$location", "FBCreds", "authFactory", function ($location, FBCreds, au
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       authFactory.setUser(user.uid); //set current user on login, switch to main view
-      $location.url("/splash");
+      $location.url("/profile");
     } else {
       authFactory.setUser(null); //this is to rest the current user to hide board.
-      $location.url("/login");
+      $location.url("/splash");
     }
   });
 }]);

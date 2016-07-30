@@ -18,5 +18,9 @@ app.controller('defaultCtrl', ['$scope', '$route', 'dataFactory', function($scop
 
 
 
-  df.getPictures($scope.makeArray);
+  // df.getPictures($scope.makeArray);
+  df.getPictures()
+    .then((data) =>
+      $scope.makeArray(data)
+    );
 }]);
