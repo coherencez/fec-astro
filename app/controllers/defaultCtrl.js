@@ -1,26 +1,17 @@
 'use strict';
 
-app.controller('defaultCtrl', ['$scope', '$route', 'dataFactory', function($scope, $route, df) {
-  $scope.arr = [];
-
-  $scope.makeArray = (data) => {
-    angular.forEach(data, (v, k) => {
-      $scope.arr.push(v);
-    });
-    $scope.rndPicture();
-  };
-
-  $scope.rndPicture = () => {
-    let rndIndex = df.rndNum(0, $scope.arr.length - 1);
-    $scope.splashPic = $scope.arr[rndIndex];
-    console.log($scope.splashPic);
-  };
-
-
-
-  // df.getPictures($scope.makeArray);
-  df.getPictures()
-    .then((data) =>
-      $scope.makeArray(data)
-    );
+app.controller('defaultCtrl', ['$scope', '$route', 'POTDfactory', function($scope, $route, df) {
+  
+  $scope.splashPic = null;
+  df.getPOTD().then(data => {
+    // df.addPOTD(data);
+    $scope.splashPic = data;
+      // .then((fbData) => {
+      //   df.getPOTDfromFB(fbData.key)
+      //     .then(data => {
+      //       console.log('potd from fb:', data.val().url)
+      //       $scope.splashPic = data.val();
+      //     });
+      // });
+  });
 }]);

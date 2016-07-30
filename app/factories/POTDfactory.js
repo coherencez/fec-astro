@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('dataFactory', ['$q', '$http', 'FirebaseURL', function ($q, $http, fbUrl) {
+app.factory('POTDfactory', ['$q', '$http', 'FBCreds', function ($q, $http, FBCreds) {
 
   // const getPictures = (callback, userID) => {
   //  firebase.database()
@@ -12,9 +12,9 @@ app.factory('dataFactory', ['$q', '$http', 'FirebaseURL', function ($q, $http, f
   //     });
   // };
 
-  const getPictures = () => {
+  const getPOTD = () => {
     return $q((resolve, reject) => {
-      $http.get(`${fbUrl}/pictures.json`)
+      $http.get(`https://api.nasa.gov/planetary/apod?concept_tags=true&api_key=${FBCreds.nasaApiKey}`)
         .success((dataObject) => {
           resolve(dataObject);
         })
@@ -24,11 +24,11 @@ app.factory('dataFactory', ['$q', '$http', 'FirebaseURL', function ($q, $http, f
     });
   };
 
-  const addSong = newSong => firebase.database().ref('songs').push(newSong);
+  const addPOTD = newPOTD => firebase.database().ref('potd').push(newPOTD);
 
   const deleteSong = songId => firebase.database().ref(`songs/${songId}`).remove();
 
-  const getSong = songId => firebase.database().ref(`songs/${songId}`).once('value');
+  const getPOTDfromFB = picId => firebase.database().ref(`potd/${picId}`).once('value');
 
   const editSong = (songFormObj, songId) => firebase.database().ref(`songs/${songId}`).update(songFormObj);
 
@@ -39,7 +39,7 @@ app.factory('dataFactory', ['$q', '$http', 'FirebaseURL', function ($q, $http, f
 
 
   return {
-    getPictures, addSong, deleteSong, getSong, editSong, rndNum
+    getPOTD, addPOTD, getPOTDfromFB
   };
 
 }]);
