@@ -2,18 +2,19 @@
   <section class="picturesHeader">
     <h2>Random Pictures Of Space</h2>
   </section>
-  <slick init-onload="true" infinite="true" slides-to-scroll="1" swipe-to-slide="true" touch-move="true" data="pictures" class="modal">
+  <slick init-onload="true" infinite="true" slides-to-scroll="1" swipe-to-slide="true" touch-move="true"
+  dots="false" data="pictures" class="modal" css-ease="linear" variableWidth="true">
   <!-- <slick init-onload="true" infinite="true" arrows="false" slides-to-scroll="1" swipe-to-slide="true" touch-move="true"
     touch-threshold="1000" dots="false" responsive="breakpoints" variableWidth="true"
     data="pictures" class="slider lazy modal" css-ease="linear"> -->
     <div class="modal-card" data-ng-repeat="x in pictures">
       <div class="modal-img">
-        <a data-ng-target="_blank" data-ng-href="{{x.hdurl}}"><img data-ng-src="{{x.url}}" alt="probably outer space" /></a>
-        <p class="bigInfo">*click to embiggen</p>
+        <img data-ng-src="{{x.url}}" alt="probably outer space" />
         <div class="imgInfo">
           <button type="button" name="favorite" data-picid="{{x.id}}">fav</button>
           <button type="button" name="info">info</button>
-      </div>
+          <button type="button" name="info" data-ng-click="clicky(x.hdurl)">HD</button>
+        </div>
       </div>
     </div>
   </slick>

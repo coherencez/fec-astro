@@ -1,0 +1,33 @@
+<section class="profileViewWrap">
+  <div class="profile">
+    <div class="imgWrap">
+      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
+    </div>
+    <div class="stats">
+      <ul>
+        <li>98<span>Items</span></li>
+        <li>298<span>Things</span></li>
+        <li>923<span>Objects</span></li>
+        <li>98<span>More</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="imgListWrap">
+    <form class="search-bar" role="search">
+      <input type="search" placeholder="Enter Search" data-ng-model="search"/>
+      <button type="submit">
+        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon-black.png" alt="Search Icon">
+      </button>
+    </form>
+    <div class="imgList" data-ng-repeat="x in favorites | filter: search">
+      <section class="imgListItem">
+        <div class="imgWrap">
+          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
+        </div>
+        <h3>Img Title here</h3>
+      </section>
+    </div>
+  </div>
+
+
+</section>

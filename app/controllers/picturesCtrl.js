@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('picturesCtrl', ['$scope', 'picturesFactory', function($scope, pf) {
+app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', function($scope, pf, $window) {
   $scope.pictures = null;
 // add 10 random photos to firebase DB
   // pf.clearArrays();
@@ -15,10 +15,10 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', function($scope, pf
   //   })
   // }, 1000);
 
-  $scope.populateDom = (data) => {
-    $scope.pictures = pf.assignId(data);
-  };
+  $scope.populateDom = (data) => {$scope.pictures = pf.assignId(data)};
+  
   pf.getPictures($scope.populateDom);
 
+  $scope.clicky = url => {$window.open(url)};
 
 }]);

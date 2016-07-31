@@ -1,21 +1,21 @@
 'use strict';
 
-app.controller('loginCtrl', ['$scope', '$route', 'authFactory', function($scope, $route, authFactory) {
+app.controller('loginCtrl', ['$scope', '$route', 'authFactory', function($scope, $route, af) {
 
   $scope.googleLogin = () => {
-    authFactory.authWithProvider(authFactory.googleProvider)
+    af.authWithProvider(af.googleProvider)
       .then((result) => { $route.reload(); console.log("logged in user google:", result.user.uid); })
       .catch((err) => console.log(err));
   };
 
   $scope.newEmail = function () {
-    authFactory.createWithEmail($scope.email, $scope.password)
+    af.createWithEmail($scope.email, $scope.password)
     .then((result) =>  { $route.reload(); console.log("signed up user email:", result.uid); })
     .catch((err) => console.log(err));
   };
 
   $scope.existingEmail = function () {
-    authFactory.authWithEmail($scope.email, $scope.password)
+    af.authWithEmail($scope.email, $scope.password)
     .then((result) =>  { $route.reload(); console.log("logged in user email:", result.uid); })
     .catch((err) => console.log(err));
   };
