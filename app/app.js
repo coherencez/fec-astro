@@ -1,5 +1,5 @@
 'use strict';
-const app = angular.module("AstroApp", ['ngRoute', 'ngAnimate'])
+const app = angular.module("AstroApp", ['ngRoute', 'ngAnimate', 'slick'])
 .constant('FirebaseURL', 'https://astroapp-e14f8.firebaseio.com');
 
 app.config(['$routeProvider', function ($routeProvider) {

@@ -1,7 +1,8 @@
 'use strict';
 
 app.controller('picturesCtrl', ['$scope', 'picturesFactory', function($scope, pf) {
-
+  $scope.pictures = null;
+// add 10 random photos to firebase DB
   // pf.clearArrays();
   // pf.getRandomDates();
   // angular.forEach(pf.dateArray, (v, i) => {
@@ -14,14 +15,10 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', function($scope, pf
   //   })
   // }, 1000);
 
-  $scope.pictures = [];
-  $scope.logData = data => {
-    $scope.pictures = data;
-    angular.forEach($scope.pictures, (v,i) => {
-      console.log(v.url);
-    });
+  $scope.populateDom = (data) => {
+    $scope.pictures = pf.assignId(data);
   };
-  pf.getPictures($scope.logData);
+  pf.getPictures($scope.populateDom);
 
 
 }]);

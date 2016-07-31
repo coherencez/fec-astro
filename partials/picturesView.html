@@ -1,3 +1,14 @@
-<div data-ng-repeat="x in pictures">
-  <img data-ng-src="{{x.url}}" alt="probably space" />
+<div class="container">
+  <slick init-onload="true" infinite="false" slides-to-scroll="1" swipe-to-slide="true" touch-move="true" data="pictures" class="modal">
+  <!-- <slick init-onload="true" infinite="true" arrows="false" slides-to-scroll="1" swipe-to-slide="true" touch-move="true"
+    touch-threshold="1000" dots="false" responsive="breakpoints" variableWidth="true"
+    data="pictures" class="slider lazy modal" css-ease="linear"> -->
+    <div class="modal-card" data-ng-repeat="x in pictures">
+      <div class="modal-img">
+        <img data-ng-src="{{x.url}}" alt="probably outer space" />
+        <button type="button" name="favorite" data-picid="{{x.id}}">fav</button>
+        <button type="button" name="info">info</button>
+      </div>
+    </div>
+  </slick>
 </div>

@@ -81,10 +81,20 @@ app.factory('picturesFactory', ['$q', '$http', 'FBCreds', function ($q, $http, F
   	return Math.floor(Math.random() * (num2 - num1 + 1)) + num1;
   };
 
+  const assignId = (dataList) => {
+    let picArray = [];
+    let picList = dataList;
+    angular.forEach(picList, (v, k) => {
+      picList[k].id = k;
+      picArray.push(picList[k]);
+    });
+    return picArray;
+  };
+
 
   return {
     getPicsForFirebase, addToPictureList, getRandomDates, fillImgArray, clearArrays, dateArray, imgArray,
-    getPictures
+    getPictures, assignId
   };
 
 }]);
