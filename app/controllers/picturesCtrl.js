@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', function($scope, pf, $window) {
+app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFactory', function($scope, pf, $window, af) {
   // required for slick init-onload option
   $scope.pictures = null;
 
@@ -24,5 +24,16 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', function
   pf.getPictures($scope.populateDom);
   // open HD link in new window
   $scope.clicky = url => {$window.open(url)};
+
+  $scope.createUserFavObj = (x) => {
+    pf.getPictureObj(x)
+    .then( (result) => {
+      // assign each fav obj UID and unique key value for reference later
+      let newObj = result.val();
+          newObj.uid = af.getUser();
+          newObj.key = x;
+    pf.addToFavoritesList(newObj);
+    });
+  };
 
 }]);

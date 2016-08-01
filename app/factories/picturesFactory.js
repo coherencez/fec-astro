@@ -1,7 +1,7 @@
 'use strict';
 
 app.factory('picturesFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FBCreds) {
-
+// begin load to firebase section
   let dateArray = [],
       imgArray = [],
       counter = 0;
@@ -74,13 +74,6 @@ app.factory('picturesFactory', ['$q', '$http', 'FBCreds', function ($q, $http, F
       });
   };
 
-  const deleteSong = songId => firebase.database().ref(`songs/${songId}`).remove();
-
-  const rndNum = (little, big) => {
-  	let num1 = little || 0, num2 = big || 100;
-  	return Math.floor(Math.random() * (num2 - num1 + 1)) + num1;
-  };
-
   const assignId = (dataList) => {
     let picArray = [];
     let picList = dataList;
@@ -90,11 +83,24 @@ app.factory('picturesFactory', ['$q', '$http', 'FBCreds', function ($q, $http, F
     });
     return picArray;
   };
+// end send to firebase section
+
+// code for building a new obj for user favorites, then adding them to firebase
+  const getPictureObj = picId => firebase.database().ref(`pictures/${picId}`).once('value');
+  const addToFavoritesList = newPic => firebase.database().ref('favorites').push(newPic);
+
+  const deleteSong = songId => firebase.database().ref(`songs/${songId}`).remove();
+
+  const rndNum = (little, big) => {
+  	let num1 = little || 0, num2 = big || 100;
+  	return Math.floor(Math.random() * (num2 - num1 + 1)) + num1;
+  };
+
 
 
   return {
     getPicsForFirebase, addToPictureList, getRandomDates, fillImgArray, clearArrays, dateArray, imgArray,
-    getPictures, assignId
+    getPictures, assignId, getPictureObj, addToFavoritesList
   };
 
 }]);

@@ -13,7 +13,7 @@
       <div class="modal-img">
         <img data-ng-src="{{x.url}}" alt="probably outer space" />
         <div class="imgInfo">
-          <button type="button" name="favorite" data-picid="{{x.id}}">fav</button>
+          <button type="button" name="favorite" data-picid="{{x.id}}" data-ng-click="createUserFavObj(x.id)">fav</button>
           <button type="button" name="info">info</button>
           <button type="button" name="info" data-ng-click="clicky(x.hdurl)">HD</button>
         </div>
