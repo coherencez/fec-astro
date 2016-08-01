@@ -25,16 +25,18 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
   // open HD link in new window
   $scope.clicky = url => {$window.open(url)};
 
-  $scope.createUserFavObj = (x) => {
-    proFac.getPictureObj(x)
-    .then( (result) => {
-      // assign each fav obj UID and unique key value for reference later
-      let newObj = result.val();
-          newObj.uid = af.getUser();
-          newObj.picKey = x;
-    proFac.addToFavoritesList(newObj);
-    console.log('new picture:', newObj, 'loaded to user:', newObj.uid, '\'s profile');
-    });
+  $scope.createUserFavObj = (fbId) => {
+      proFac.getPictureObj(fbId)
+      .then( (result) => {
+        // assign each fav obj UID and unique key value for reference later
+        let newObj = result.val();
+            newObj.uid = af.getUser();
+            newObj.picKey = fbId;
+        if(newObj.uid !== null) {
+          proFac.addToFavoritesList(newObj);
+          console.log('new picture:', newObj, 'loaded to user:', newObj.uid, '\'s profile');
+        }
+      });
   };
 
 }]);
