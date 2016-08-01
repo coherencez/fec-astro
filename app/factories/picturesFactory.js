@@ -85,7 +85,7 @@ app.factory('picturesFactory', ['$q', '$http', 'FBCreds', function ($q, $http, F
   };
 // end send to firebase section
 
-// code for building a new obj for user favorites, then adding them to firebase
+// adding favorites to firebase section
   const getPictureObj = picId => firebase.database().ref(`pictures/${picId}`).once('value');
   const addToFavoritesList = newPic => firebase.database().ref('favorites').push(newPic);
 

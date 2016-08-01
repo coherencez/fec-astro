@@ -20,112 +20,22 @@
       </form>
     </header>
     <div class="imgList" >
-      <section class="imgListItem">
+      <section class="imgListItem" data-ng-repeat="x in favorites | filter: search">
         <div class="imgWrap">
-          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
+          <img data-ng-src="{{x.url}}" alt="{{x.title}}">
         </div>
         <div class="favInfo">
-          <h3>Img Title here</h3>
+          <h3>{{x.title}}</h3>
           <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Description</a>
+            <a href="javascript:void(0)" class="expander-trigger expander-hidden">More info</a>
             <div class="expander-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio mollitia fugiat facilis enim accusamus quisquam aut, repellendus incidunt quod optio facere labore illo numquam ipsum beatae vero debitis, fugit excepturi.</p>
+              <p>{{x.title}}</p>
             </div>
           </div>
         </div>
         <div class="buttonGroup">
-          <button type="button" name="edit">Edit</button>
-          <button type="button" name="delete">X</button>
-        </div>
-      </section>
-      <section class="imgListItem">
-        <div class="imgWrap">
-          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
-        </div>
-        <div class="favInfo">
-          <h3>Img Title here</h3>
-          <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Description</a>
-            <div class="expander-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio mollitia fugiat facilis enim accusamus quisquam aut, repellendus incidunt quod optio facere labore illo numquam ipsum beatae vero debitis, fugit excepturi.</p>
-            </div>
-          </div>
-        </div>
-        <div class="buttonGroup">
-          <button type="button" name="edit">Edit</button>
-          <button type="button" name="delete">X</button>
-        </div>
-      </section>
-      <section class="imgListItem">
-        <div class="imgWrap">
-          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
-        </div>
-        <div class="favInfo">
-          <h3>Img Title here</h3>
-          <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Description</a>
-            <div class="expander-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio mollitia fugiat facilis enim accusamus quisquam aut, repellendus incidunt quod optio facere labore illo numquam ipsum beatae vero debitis, fugit excepturi.</p>
-            </div>
-          </div>
-        </div>
-        <div class="buttonGroup">
-          <button type="button" name="edit">Edit</button>
-          <button type="button" name="delete">X</button>
-        </div>
-      </section>
-      <section class="imgListItem">
-        <div class="imgWrap">
-          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
-        </div>
-        <div class="favInfo">
-          <h3>Img Title here</h3>
-          <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Description</a>
-            <div class="expander-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio mollitia fugiat facilis enim accusamus quisquam aut, repellendus incidunt quod optio facere labore illo numquam ipsum beatae vero debitis, fugit excepturi.</p>
-            </div>
-          </div>
-        </div>
-        <div class="buttonGroup">
-          <button type="button" name="edit">Edit</button>
-          <button type="button" name="delete">X</button>
-        </div>
-      </section>
-      <section class="imgListItem">
-        <div class="imgWrap">
-          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
-        </div>
-        <div class="favInfo">
-          <h3>Img Title here</h3>
-          <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Description</a>
-            <div class="expander-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio mollitia fugiat facilis enim accusamus quisquam aut, repellendus incidunt quod optio facere labore illo numquam ipsum beatae vero debitis, fugit excepturi.</p>
-            </div>
-          </div>
-        </div>
-        <div class="buttonGroup">
-          <button type="button" name="edit">Edit</button>
-          <button type="button" name="delete">X</button>
-        </div>
-      </section>
-      <section class="imgListItem">
-        <div class="imgWrap">
-          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
-        </div>
-        <div class="favInfo">
-          <h3>Img Title here</h3>
-          <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Description</a>
-            <div class="expander-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio mollitia fugiat facilis enim accusamus quisquam aut, repellendus incidunt quod optio facere labore illo numquam ipsum beatae vero debitis, fugit excepturi.</p>
-            </div>
-          </div>
-        </div>
-        <div class="buttonGroup">
-          <button type="button" name="edit">Edit</button>
-          <button type="button" name="delete">X</button>
+          <button type="button" name="edit" data-uid="{{x.uid}}" data-key="{{x.key}}">Edit</button>
+          <button type="button" name="delete" data-uid="{{x.uid}}" data-key="{{x.key}}">X</button>
         </div>
       </section>
     </div>
