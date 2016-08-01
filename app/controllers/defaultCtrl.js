@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('defaultCtrl', ['$scope', '$route', 'POTDfactory', function($scope, $route, df) {
-  
+app.controller('defaultCtrl', ['$scope', '$route', '$window', 'POTDfactory', function($scope, $route, $window, df) {
+
   $scope.splashPic = null;
   df.getPOTD().then(data => {
     // df.addPOTD(data);
@@ -14,4 +14,5 @@ app.controller('defaultCtrl', ['$scope', '$route', 'POTDfactory', function($scop
       //     });
       // });
   });
+  $scope.clicky = url => {$window.open(url)};
 }]);
