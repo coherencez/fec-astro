@@ -6,7 +6,6 @@
     @include span-columns(6)
     @include shift(3)
     background: lighten($primary-bg-color, 10%)
-    border: 5px solid $primary-border-color
     margin-top: 2%
     display: flex
     flex-flow: column nowrap
@@ -14,6 +13,9 @@
 
     .loginHeader
       text-align: center
+      border-bottom: 5px solid $primary-border-color
+      width: 100%
+
 
     .buttonGroup
       display: flex
