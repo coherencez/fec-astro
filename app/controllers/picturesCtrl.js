@@ -15,7 +15,8 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', function
   //   angular.forEach(pf.imgArray, (v,i) => {
   //     pf.addToPictureList(v);
   //   })
-  // }, 1000);
+  // }, 500);
+// end random photos block
 
   // set $scope.pictures to pics loaded from firebase after getting a uid
   $scope.populateDom = (data) => {$scope.pictures = pf.assignId(data)};
