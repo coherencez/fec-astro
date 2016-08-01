@@ -1,8 +1,10 @@
 'use strict';
 
 app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', function($scope, pf, $window) {
+  // required for slick init-onload option
   $scope.pictures = null;
-// add 10 random photos to firebase DB
+
+// add 10 random photos to firebase DB from NASA APOD
   // pf.clearArrays();
   // pf.getRandomDates();
   // angular.forEach(pf.dateArray, (v, i) => {
@@ -15,10 +17,11 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', function
   //   })
   // }, 1000);
 
+  // set $scope.pictures to pics loaded from firebase after getting a uid
   $scope.populateDom = (data) => {$scope.pictures = pf.assignId(data)};
-  
+  // get pictures from firebase db
   pf.getPictures($scope.populateDom);
-
+  // open HD link in new window
   $scope.clicky = url => {$window.open(url)};
 
 }]);
