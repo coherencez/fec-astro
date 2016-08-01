@@ -3,13 +3,54 @@
 
   .profile
     @include span-columns(3)
+    @include shift(1)
+    background: lighten($primary-bg-color, 6%)
+    position: fixed
 
   .imgListWrap
     @include span-columns(7)
-    @include shift(4)
+    border: 5px solid black
+    background: lighten($primary-bg-color, 6%)
+    margin-left: 35%
+    position: fixed
 
-    .search-bar
-      position: relative
-      bottom: 152px
-      left: 0
-      right: 0
+    .imgList
+      overflow: hidden
+      overflow-y: scroll
+      height: 500px
+
+    .imgListHeader
+      height: 55px
+      border-bottom: 3px solid $primary-border-color
+      text-align: center
+      margin-top: 2%
+
+      .search-bar
+        width: 50%
+        margin: 0 auto
+
+    .imgListItem
+      display: flex
+      flex-flow: row nowrap
+      justify-content: space-between
+      background: lighten($primary-bg-color, 50%)
+      color: white
+      width: 95%
+      margin: 4% auto
+      padding: auto 0
+      box-shadow: 0 2px 3px 2px rgba(255, 255, 255, .75)
+      border: 5px solid $primary-border-color
+
+      .imgWrap
+        height: 79px
+        width: 79px
+        margin: auto 0
+
+        img
+          height: 100%
+          width: 100%
+
+      .favInfo
+
+      .buttonGroup
+        margin: auto 0

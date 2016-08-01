@@ -5,26 +5,38 @@
     </div>
     <div class="stats">
       <ul>
-        <li>98<span>Items</span></li>
-        <li>298<span>Things</span></li>
-        <li>923<span>Objects</span></li>
-        <li>98<span>More</span></li>
+        <li>98<span>Images</span></li>
+        <li>298<span>Events</span></li>
       </ul>
     </div>
   </div>
   <div class="imgListWrap">
-    <form class="search-bar" role="search">
-      <input type="search" placeholder="Enter Search" data-ng-model="search"/>
-      <button type="submit">
-        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon-black.png" alt="Search Icon">
-      </button>
-    </form>
-    <div class="imgList" data-ng-repeat="x in favorites | filter: search">
+    <header class="imgListHeader">
+      <form class="search-bar" role="search">
+        <input type="search" placeholder="Enter Search" data-ng-model="search"/>
+        <button type="submit">
+          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon-black.png" alt="Search Icon">
+        </button>
+      </form>
+    </header>
+    <div class="imgList" >
       <section class="imgListItem">
         <div class="imgWrap">
           <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
         </div>
-        <h3>Img Title here</h3>
+        <div class="favInfo">
+          <h3>Img Title here</h3>
+          <div class="expander">
+            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Description</a>
+            <div class="expander-content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio mollitia fugiat facilis enim accusamus quisquam aut, repellendus incidunt quod optio facere labore illo numquam ipsum beatae vero debitis, fugit excepturi.</p>
+            </div>
+          </div>
+        </div>
+        <div class="buttonGroup">
+          <button type="button" name="edit">Edit</button>
+          <button type="button" name="delete">X</button>
+        </div>
       </section>
     </div>
   </div>
