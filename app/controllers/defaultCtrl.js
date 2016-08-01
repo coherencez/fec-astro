@@ -1,7 +1,8 @@
 'use strict';
 
 app.controller('defaultCtrl', ['$scope', '$route', '$window', 'POTDfactory', function($scope, $route, $window, df) {
-
+// trying to add POTD to firebase and then return that back down incase of 500 internal service error from NASA
+  // currently just loads POTD straight from NASA
   $scope.splashPic = null;
   df.getPOTD().then(data => {
     // df.addPOTD(data);
