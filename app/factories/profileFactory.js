@@ -6,7 +6,7 @@ app.factory('profileFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FB
   const getPictureObj = picId => firebase.database().ref(`pictures/${picId}`).once('value');
   const addToFavoritesList = newPic => firebase.database().ref('favorites').push(newPic);
 
-  const deleteSong = songId => firebase.database().ref(`songs/${songId}`).remove();
+  const deleteFromFavorites = favId => firebase.database().ref(`favorites/${favId}`).remove();
 
   const rndNum = (little, big) => {
   	let num1 = little || 0, num2 = big || 100;
@@ -23,10 +23,20 @@ app.factory('profileFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FB
       });
   };
 
+  const assignFavId = (dataList) => {
+    let picArray = [];
+    let picList = dataList;
+    angular.forEach(picList, (v, k) => {
+      picList[k].favId = k;
+      picArray.push(picList[k]);
+    });
+    return picArray;
+  };
+
 
 
   return {
-    getPictureObj, addToFavoritesList, getFavorites
+    getPictureObj, addToFavoritesList, getFavorites, deleteFromFavorites, assignFavId
   };
 
 }]);

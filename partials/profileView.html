@@ -5,7 +5,7 @@
     </div>
     <div class="stats">
       <ul>
-        <li>98<span>Images</span></li>
+        <li>{{favorites.length}}<span>Images</span></li>
         <li>298<span>Events</span></li>
       </ul>
     </div>
@@ -20,24 +20,28 @@
       </form>
     </header>
     <div class="imgList" >
+      <!-- dynamic list items -->
       <section class="imgListItem" data-ng-repeat="x in favorites | filter: search">
         <div class="imgWrap">
-          <img data-ng-src="{{x.url}}" alt="{{x.title}}">
+          <img data-ng-src="{{x.url}}" data-ng-click="hdUrl(x.hdurl)" alt="Hello title here" style="cursor: pointer"/>
         </div>
         <div class="favInfo">
           <h3>{{x.title}}</h3>
           <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden">More info</a>
+            <a href="javascript:void(0)" class="expander-trigger expander-hidden" data-ng-click="dropDown($event)">More info</a>
             <div class="expander-content">
-              <p>{{x.title}}</p>
+              <p>&copy;&nbsp;{{x.copyright ? x.copyright : 'public domain'}}</p>
+              <p>{{x.date}}</p>
+              <p>{{x.explanation}}</p>
             </div>
           </div>
         </div>
         <div class="buttonGroup">
           <button type="button" name="edit" data-uid="{{x.uid}}" data-key="{{x.key}}">Edit</button>
-          <button type="button" name="delete" data-uid="{{x.uid}}" data-key="{{x.key}}">X</button>
+          <button type="button" name="delete" data-uid="{{x.uid}}" data-key="{{x.key}}" data-ng-click="deleteFavorite(x.favId)">X</button>
         </div>
       </section>
+
     </div>
   </div>
 </section>
