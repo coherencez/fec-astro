@@ -1,0 +1,20 @@
+{
+  "name": "lib",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "Thomas Swann <tkswann@mac.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/tkswann2/fec-astro",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-slick": "^0.2.1"
+  }
+}

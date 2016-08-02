@@ -1,0 +1,44 @@
+<div class="container">
+  <section class="picturesHeader">
+    <h2>Random Pictures Of Space</h2>
+  </section>
+  <slick init-onload="true" infinite="true" slides-to-scroll="1" swipe-to-slide="true" touch-move="true"
+  dots="false" data="pictures" class="modal" css-ease="linear" variableWidth="true">
+  <!-- <slick init-onload="true" infinite="true" arrows="false" slides-to-scroll="1" swipe-to-slide="true" touch-move="true"
+    touch-threshold="1000" dots="false" responsive="breakpoints" variableWidth="true"
+    data="pictures" class="slider lazy modal" css-ease="linear"> -->
+
+    <!-- VERSION 1 with only buttons for more info -->
+    <div class="modal-card" data-ng-repeat="x in pictures">
+      <div class="modal-img">
+        <img data-ng-src="{{x.url}}" alt="probably outer space" />
+        <div class="imgInfo">
+          <button type="button" name="favorite" data-picid="{{x.id}}" data-ng-click="createUserFavObj(x.id)">fav</button>
+          <button type="button" name="info">info</button>
+          <button type="button" name="info" data-ng-click="clicky(x.hdurl)">HD</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VERSION 2 with hover popup info -->
+    <!-- <div class="modal-card hover-tile-outer" data-ng-repeat="x in pictures">
+      <div class="hover-tile-container">
+        <div class="modal-img hover-tile hover-tile-visible">
+          <img data-ng-src="{{x.url}}" alt="probably outer space" />
+          <div class="imgInfo">
+            <button type="button" name="favorite" data-picid="{{x.id}}">fav</button>
+            <button type="button" name="info">info</button>
+            <button type="button" name="info" data-ng-click="clicky(x.hdurl)">HD</button>
+          </div>
+        </div>
+        <div class="hover-tile hover-tile-hidden hiddenInfo">
+          <h4>{{x.title}}</h4>
+          <h4>{{x.copyright}}</h4>
+          <p>{{x.explanation}}</p>
+          <p>{{x.date}}</p>
+        </div>
+      </div>
+    </div> -->
+
+  </slick>
+</div>
