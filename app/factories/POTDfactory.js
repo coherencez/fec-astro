@@ -2,16 +2,6 @@
 
 app.factory('POTDfactory', ['$q', '$http', 'FBCreds', function ($q, $http, FBCreds) {
 
-  // const getPictures = (callback, userID) => {
-  //  firebase.database()
-  //   .ref('pictures')
-  //   // .orderByChild('uid')
-  //   // .equalTo(userID)
-  //   .on('value', (pictureData) => {
-  //       callback(pictureData.val());
-  //     });
-  // };
-
   const getPOTD = () => {
     return $q((resolve, reject) => {
       $http.get(`https://api.nasa.gov/planetary/apod?concept_tags=true&api_key=${FBCreds.nasaApiKey}`)
