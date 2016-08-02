@@ -11,7 +11,7 @@
 
     <div data-ng-include="'partials/nav.html'"></div>
 
-      <div class="test" data-ng-view></div>
+      <div data-ng-class="slide-animate" data-ng-view></div>
 
     <!-- <div data-ng-include="'partials/footer.html'"></div> -->
 
@@ -27,7 +27,7 @@
      <!-- Credentials -->
      <script type="text/javascript" src="/app/values/firebaseAuth.js"></script>
      <!-- Services -->
-     <!-- <script type="text/javascript" src="/app/services/*.js"></script> -->
+     <script type="text/javascript" src="app/services/slideAnimation.js"></script>
      <!-- Factories -->
      <script type="text/javascript" src="/app/factories/POTDfactory.js"></script>
      <script type="text/javascript" src="/app/factories/picturesFactory.js"></script>
