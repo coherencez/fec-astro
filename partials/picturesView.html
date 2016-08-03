@@ -1,29 +1,33 @@
-<div class="container">
-
-  <div class="cards">
-    <div class="card" data-ng-repeat="x in pictures">
-      <div class="card-image">
-        <img data-ng-src="{{x.url}}" alt="probably outer space" />
-      </div>
-      <div class="card-header">
-        {{x.title}}
-      </div>
-      <div class="card-copy">
-        <p>{{x.explanation}}</p>
-      </div>
-      <div class="imgInfo">
-        <button type="button" name="favorite" data-picid="{{x.id}}" data-ng-click="createUserFavObj(x.id)">fav</button>
-        <button type="button" name="info">info</button>
-        <button type="button" name="info" data-ng-click="clicky(x.hdurl)">HD</button>
-      </div>
+<div class="cards">
+  <div class="card" data-ng-repeat="x in pictures" data-ng-click="clicky(x.hdurl)">
+    <div class="card-image">
+      <img data-ng-src="{{x.url}}" alt="probably outer space" />
+    </div>
+    <div class="card-header">
+      {{x.title}}
+    </div>
+    <div class="card-copy">
+      <p>&copy;&nbsp;{{x.copyright ? x.copyright : 'public domain'}}&nbsp;&nbsp;{{x.date}}</p>
+    </div>
+    <div class="imgInfo">
+      <button name="favorite" data-picid="{{x.id}}" data-ng-click="createUserFavObj(x.id, $event)"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+      <button><i class="fa fa-info-circle" name="info" data-ng-click="$event.stopPropagation()" aria-hidden="true"></i></button>
     </div>
   </div>
-
 </div>
 
 
 
+<!-- expander dropdown info markup -->
+<!-- <div class="expander">
+  <a href="javascript:void(0)" class="expander-trigger expander-hidden" data-ng-click="dropDown($event)">Description</a>
+  <div class="expander-content">
+    <p>{{x.explanation}}</p>
+  </div>
+</div> -->
 
+
+<!-- picture modal -->
 <!-- <slick init-onload="true" infinite="true" slides-to-scroll="1" swipe-to-slide="true" touch-move="true"
 dots="false" data="pictures" class="modal" css-ease="linear" variableWidth="true"> -->
 
