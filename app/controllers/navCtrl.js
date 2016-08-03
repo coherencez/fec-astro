@@ -1,6 +1,10 @@
 'use strict';
 
-app.controller('navCtrl', ['$scope', '$route', 'authFactory', function($scope, $route, authFactory) {
+app.controller('navCtrl', ['$scope', '$route', 'authFactory', '$rootScope', function($scope, $route, authFactory, $rootScope) {
+
+  $rootScope.searchText = {};
+  $rootScope.searchText.search = "";
+
   $scope.loginStatus = () => authFactory.userState();
 
   $scope.logout = function(){

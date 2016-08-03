@@ -23,7 +23,7 @@
     </header> -->
     <div class="imgList" >
       <!-- dynamic list items -->
-      <section class="imgListItem" data-ng-repeat="x in favorites | filter: search">
+      <section class="imgListItem" data-ng-repeat="x in favorites | filter: searchText.search">
         <div class="imgWrap">
           <img data-ng-src="{{x.url}}" data-ng-click="hdUrl(x.hdurl)" alt="Hello title here" style="cursor: pointer"/>
         </div>
