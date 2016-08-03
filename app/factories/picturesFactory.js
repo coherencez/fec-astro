@@ -90,6 +90,8 @@ app.factory('picturesFactory', ['$q', '$http', 'FBCreds', function ($q, $http, F
   const addToFavoritesList = newPic => firebase.database().ref('favorites').push(newPic);
 
   const deleteSong = songId => firebase.database().ref(`songs/${songId}`).remove();
+  const editSong = (songFormObj, songId) => firebase.database().ref(`songs/${songId}`).update(songFormObj);
+  
 
   const rndNum = (little, big) => {
   	let num1 = little || 0, num2 = big || 100;
