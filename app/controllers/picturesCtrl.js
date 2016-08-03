@@ -25,7 +25,8 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
   // open HD link in new window
   $scope.clicky = url => {$window.open(url)};
 
-  $scope.createUserFavObj = (fbId) => {
+  $scope.createUserFavObj = (fbId, $event) => {
+      $event.stopPropagation();
       proFac.getPictureObj(fbId)
       .then( (result) => {
         // assign each fav obj UID and unique key value for reference later
@@ -38,5 +39,14 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
         }
       });
   };
+// code for description drop-down like favorites list
+  // $scope.dropDown = function (e) {
+  //     let $favImg = $(e.currentTarget.parentNode.parentNode.parentNode.children[0]),
+  //         $buttonGroup = $(e.currentTarget.parentNode.parentNode.parentNode.children[2]);
+  //     // $('.expander-trigger').toggleClass('expander-hidden');
+  //     $(e.currentTarget).toggleClass('expander-hidden');
+  //     $favImg.toggleClass('hidden');
+  //     $buttonGroup.toggleClass('hidden');
+  // };
 
 }]);
