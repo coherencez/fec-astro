@@ -22,10 +22,10 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
   // set $scope.pictures to pics loaded from firebase after getting a uid assigned
   $scope.populateDom = (data) => {
     let picArray = pf.assignId(data),
-        rndIndArray = pf.rndIndexValues(0, (picArray.length -1), $scope.numOfPics),
+        rndIndArray = pf.rndIndexValues(0, (picArray.length - 1), $scope.numOfPics),
         finalPicArray = [];
     angular.forEach(rndIndArray, (v, i) => {
-      finalPicArray.push(picArray[v]);
+      finalPicArray.push( picArray[v] );
     });
     $scope.pictures = finalPicArray;
   };
@@ -47,6 +47,11 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
           console.log('new picture:', newObj, 'loaded to user:', newObj.uid, '\'s profile');
         }
       });
+  };
+
+  $scope.showInfoCard = function (e) {
+    e.stopPropagation();
+    $(e.path[3].children[4]).toggleClass('hidden');
   };
 // code for description drop-down like favorites list
   // $scope.dropDown = function (e) {
