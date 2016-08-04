@@ -3,6 +3,7 @@
 app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFactory', 'profileFactory', function($scope, pf, $window, af, proFac) {
   // required for slick init-onload option
   $scope.pictures = null;
+  $scope.numOfPics = 25;
 
 // add 10 random photos to firebase DB from NASA APOD
   // pf.clearArrays();
@@ -18,7 +19,7 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
   // }, 500);
 // end random photos block
 
-  // set $scope.pictures to pics loaded from firebase after getting a uid
+  // set $scope.pictures to pics loaded from firebase after getting a uid assigned
   $scope.populateDom = (data) => {$scope.pictures = pf.assignId(data)};
   // get pictures from firebase db
   pf.getPictures($scope.populateDom);

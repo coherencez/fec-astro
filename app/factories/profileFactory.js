@@ -4,7 +4,9 @@ app.factory('profileFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FB
 
 // adding favorites to firebase section
   const getPictureObj = picId => firebase.database().ref(`pictures/${picId}`).once('value');
+  const getFromFav = picId => firebase.database().ref(`favorites/${picId}`).once('value');
   const addToFavoritesList = newPic => firebase.database().ref('favorites').push(newPic);
+  const addToProfile = newPic => firebase.database().ref('profile').push(newPic);
 
   const deleteFromFavorites = favId => firebase.database().ref(`favorites/${favId}`).remove();
 
@@ -36,7 +38,7 @@ app.factory('profileFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FB
 
 
   return {
-    getPictureObj, addToFavoritesList, getFavorites, deleteFromFavorites, assignFavId
+    getPictureObj, addToFavoritesList, getFavorites, deleteFromFavorites, assignFavId, addToProfile, getFromFav
   };
 
 }]);

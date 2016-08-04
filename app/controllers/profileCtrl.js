@@ -2,7 +2,10 @@
 
 app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$window', function($scope, proFac, af, $window) {
   $scope.userId = af.getUser();
-  
+
+  $scope.date = new Date().toString();
+  $scope.dateArr = $scope.date.split(' '); // split date string into array for nice formatting in DOM
+
   $scope.dropDown = function (e) {
       let $favImg = $(e.currentTarget.parentNode.parentNode.parentNode.children[0]),
           $buttonGroup = $(e.currentTarget.parentNode.parentNode.parentNode.children[2]);
@@ -18,7 +21,6 @@ app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$windo
     angular.forEach(favoritesList, (v, k) => {
       $scope.favorites.push(v);
     })
-    console.log($scope.favorites);
   };
   proFac.getFavorites($scope.loadDataArray, $scope.userId);
 
@@ -29,6 +31,16 @@ app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$windo
   $scope.deleteFavorite = (favId) => {
     proFac.deleteFromFavorites(favId);
     console.log('deleted img:', favId);
+  };
+
+  $scope.setProfilePic = (picid) => {
+    proFac.getFromFav(picid)
+    .then((result) => {
+      let newObj = result.val();
+      $scope.profPic = newObj;
+      //     newObj.favid = picid;
+      // proFac.addToProfile(newObj)
+    });
   };
 
 
