@@ -1,7 +1,8 @@
 'use strict';
 
-app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$window', function($scope, proFac, af, $window) {
+app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$window', '$location', function($scope, proFac, af, $window, $location) {
   $scope.userId = af.getUser();
+  $scope.profPic = null;
 
   $scope.date = new Date().toString();
   $scope.dateArr = $scope.date.split(' '); // split date string into array for nice formatting in DOM
@@ -38,6 +39,8 @@ app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$windo
     .then((result) => {
       let newObj = result.val();
       $scope.profPic = newObj;
+      $location.url('/profile');
+      $scope.$apply();
       //     newObj.favid = picid;
       // proFac.addToProfile(newObj)
     });
