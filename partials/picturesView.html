@@ -1,5 +1,5 @@
 <div class="cards">
-  <div class="card" data-ng-repeat="x in pictures | limitTo:numOfPics | filter: searchText.search" data-ng-click="clicky(x.hdurl)">
+  <div class="card" data-ng-repeat="x in pictures track by x.id | limitTo:numOfPics | filter: searchText.search" data-ng-click="clicky(x.hdurl)">
     <div class="card-image">
       <img data-ng-src="{{x.url}}" alt="probably outer space" />
     </div>

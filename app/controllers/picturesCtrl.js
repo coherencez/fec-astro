@@ -20,7 +20,15 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
 // end random photos block
 
   // set $scope.pictures to pics loaded from firebase after getting a uid assigned
-  $scope.populateDom = (data) => {$scope.pictures = pf.assignId(data)};
+  $scope.populateDom = (data) => {
+    let picArray = pf.assignId(data),
+        rndIndArray = pf.rndIndexValues(0, (picArray.length -1), $scope.numOfPics),
+        finalPicArray = [];
+    angular.forEach(rndIndArray, (v, i) => {
+      finalPicArray.push(picArray[v]);
+    });
+    $scope.pictures = finalPicArray;
+  };
   // get pictures from firebase db
   pf.getPictures($scope.populateDom);
   // open HD link in new window
