@@ -1,11 +1,11 @@
 'use strict';
 
 app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$window', '$location', function($scope, proFac, af, $window, $location) {
-  $scope.userId = af.getUser();
+  const userid = af.getUser();
   $scope.profPic = null;
 
-  $scope.date = new Date().toString();
-  $scope.dateArr = $scope.date.split(' '); // split date string into array for nice formatting in DOM
+  const date = new Date().toString();
+  $scope.dateArr = date.split(' '); // split date string into array for nice formatting in DOM
 
   $scope.dropDown = function (e) {
       let $favImg = $(e.currentTarget.parentNode.parentNode.parentNode.children[0]),
@@ -23,7 +23,7 @@ app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$windo
       $scope.favorites.push(v);
     })
   };
-  proFac.getFavorites($scope.loadDataArray, $scope.userId);
+  proFac.getFavorites($scope.loadDataArray, userid);
 
   $scope.hdUrl = (url) => {
     $window.open(url);
