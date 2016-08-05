@@ -10,8 +10,8 @@
       <p>&copy;&nbsp;{{x.copyright ? x.copyright : 'public domain'}}&nbsp;&nbsp;{{x.date}}</p>
     </div>
     <div class="imgInfo">
-      <button name="favorite" data-picid="{{x.id}}" data-ng-click="createUserFavObj(x.id, $event)"><i class="fa fa-star-o" aria-hidden="true"></i></button>
-      <button><i class="fa fa-info-circle" name="info" data-ng-click="showInfoCard($event)" aria-hidden="true"></i></button>
+      <button name="favorite" data-picid="{{x.id}}" data-ng-click="createUserFavObj(x.id, $event)" class="loginButton"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+      <button><i class="fa fa-info-circle" name="info" data-ng-click="showInfoCard($event)" aria-hidden="true" class="loginButton"></i></button>
     </div>
     <div class="card infoCard hidden">
       <p>&copy;&nbsp;{{x.copyright ? x.copyright : 'public domain'}}&nbsp;&nbsp;{{x.date}}</p>
