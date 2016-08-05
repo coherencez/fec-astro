@@ -21,4 +21,5 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl: 'partials/loginView.html',
       controller: 'loginCtrl'
     })
+
 }]);

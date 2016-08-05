@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('navCtrl', ['$scope', '$route', 'authFactory', '$rootScope', function($scope, $route, authFactory, $rootScope) {
+app.controller('navCtrl', ['$scope', '$route', 'authFactory', '$rootScope', '$location', function($scope, $route, authFactory, $rootScope, $location) {
 
   $rootScope.searchText = {};
   $rootScope.searchText.search = "";
@@ -53,5 +53,39 @@ app.controller('navCtrl', ['$scope', '$route', 'authFactory', '$rootScope', func
       });
     });
   });
+
+// secret nav menu
+  const navArr = ['pictures()', 'profile()', 'potd()', 'logout()', 'login()'];
+  const message = 'Use the options below to navigate the app.\nJust type your choice exactly as it is shown in the console.\nEnjoy!\n\n'
+  const nav = () => {
+    console.warn('Congratulations on finding the secrect nav menu!\n')
+    console.log(message)
+    console.warn('Nav Options:')
+    console.info(navArr.join('\n'))
+  };
+  const pictures = () => {
+    $location.url('/pictures')
+    $scope.$apply();
+  };
+  const profile = () => {
+    $location.url('/profile')
+    $scope.$apply();
+  };
+  const potd = () => {
+    $location.url('/splash')
+    $scope.$apply();
+  };
+  const login = () => {
+    $location.url('/login')
+    $scope.$apply();
+  };
+
+  window.nav = nav;
+  window.pictures = pictures;
+  window.profile = profile;
+  window.potd = potd;
+  window.login = login;
+  window.logout = $scope.logout;
+// end console nav
 
 }]);
