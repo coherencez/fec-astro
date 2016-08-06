@@ -1,28 +1,28 @@
 'use strict';
 
-app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFactory', 'profileFactory', function($scope, pf, $window, af, proFac) {
+app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFactory', 'profileFactory', '$route', function($scope, pf, $window, af, proFac, $route) {
   // required for slick init-onload option
   $scope.pictures = null;
-  $scope.numOfPics = 25;
+  $scope.numOfPics = 24;
 
 // add 10 random photos to firebase DB from NASA APOD
-  pf.clearArrays();
-  pf.getRandomDates();
-  angular.forEach(pf.dateArray, (v, i) => {
-    pf.getPicsForFirebase(v)
-      .then(data => pf.fillImgArray(data))
-  });
-  setTimeout(() => {
-    angular.forEach(pf.imgArray, (v,i) => {
-      pf.addToPictureList(v);
-    })
-  }, 500);
+  // pf.clearArrays();
+  // pf.getRandomDates();
+  // angular.forEach(pf.dateArray, (v, i) => {
+  //   pf.getPicsForFirebase(v)
+  //     .then(data => pf.fillImgArray(data))
+  // });
+  // setTimeout(() => {
+  //   angular.forEach(pf.imgArray, (v,i) => {
+  //     pf.addToPictureList(v);
+  //   })
+  // }, 500);
 // end random photos block
 
   // set $scope.pictures to pics loaded from firebase after getting a uid assigned
   $scope.populateDom = (data) => {
     let picArray = pf.assignId(data),
-        rndIndArray = pf.rndIndexValues(0, (picArray.length - 1), $scope.numOfPics),
+        rndIndArray = pf.rndIndexValues( 0, (picArray.length - 1), $scope.numOfPics),
         finalPicArray = [];
     angular.forEach(rndIndArray, (v, i) => {
       finalPicArray.push( picArray[v] );
@@ -53,6 +53,8 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
     e.stopPropagation();
     $(e.path[3].children[4]).toggleClass('hidden');
   };
+
+  $scope.reload = () => {$route.reload()};
 // code for description drop-down like favorites list
   // $scope.dropDown = function (e) {
   //     let $favImg = $(e.currentTarget.parentNode.parentNode.parentNode.children[0]),

@@ -1,3 +1,4 @@
+<button type="button" name="morepics" data-ng-click="reload()">More Pictures</button>
 <div class="cards">
   <div class="card" data-ng-repeat="x in pictures | limitTo:numOfPics | filter: searchText.search track by $index" data-ng-click="clicky(x.hdurl)">
     <div class="card-image">
