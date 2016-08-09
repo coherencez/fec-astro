@@ -46,6 +46,28 @@ app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$windo
     });
   };
 
+// data scraping attempt
+  $scope.logEvents = (data) => {console.log('hello',data)};
+  // proFac.getEvents($scope.logEvents, $scope.logEvents);
 
+// sun and moon phases
+  proFac.getSunMoonPhases()
+    .then((data) => {
+      let phasesArr = [];
+      $scope.events = [];
+      console.log('sun and moon phases:',data);
+      angular.forEach(data.sundata, (v, i) => {
+        phasesArr.push(v);
+      })
+      angular.forEach(data.moondata, (v, i) => {
+        phasesArr.push(v);
+      })
+      $scope.events = phasesArr.filter((v) => {
+        return v.phen === 'R' | v.phen === 'S'
+      })
+      $scope.events.splice(2, 0, data.curphase)
+      $scope.events.splice(3, 0, data.closestphase)
+      console.log('events array:', $scope.events);
+    });
 
 }]);

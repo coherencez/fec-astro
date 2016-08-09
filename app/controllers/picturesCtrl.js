@@ -6,17 +6,17 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
   $scope.numOfPics = 24;
 
 // add 10 random photos to firebase DB from NASA APOD
-  // pf.clearArrays();
-  // pf.getRandomDates();
-  // angular.forEach(pf.dateArray, (v, i) => {
-  //   pf.getPicsForFirebase(v)
-  //     .then(data => pf.fillImgArray(data))
-  // });
-  // setTimeout(() => {
-  //   angular.forEach(pf.imgArray, (v,i) => {
-  //     pf.addToPictureList(v);
-  //   })
-  // }, 500);
+  pf.clearArrays();
+  pf.getRandomDates();
+  angular.forEach(pf.dateArray, (v, i) => {
+    pf.getPicsForFirebase(v)
+      .then(data => pf.fillImgArray(data))
+  });
+  setTimeout(() => {
+    angular.forEach(pf.imgArray, (v,i) => {
+      pf.addToPictureList(v);
+    })
+  }, 500);
 // end random photos block
 
   // set $scope.pictures to pics loaded from firebase after getting a uid assigned
@@ -55,14 +55,5 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
   };
 
   $scope.reload = () => {$route.reload()};
-// code for description drop-down like favorites list
-  // $scope.dropDown = function (e) {
-  //     let $favImg = $(e.currentTarget.parentNode.parentNode.parentNode.children[0]),
-  //         $buttonGroup = $(e.currentTarget.parentNode.parentNode.parentNode.children[2]);
-  //     // $('.expander-trigger').toggleClass('expander-hidden');
-  //     $(e.currentTarget).toggleClass('expander-hidden');
-  //     $favImg.toggleClass('hidden');
-  //     $buttonGroup.toggleClass('hidden');
-  // };
 
 }]);

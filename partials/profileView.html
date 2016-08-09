@@ -14,9 +14,35 @@
     <div class="stats">
       <ul>
         <li>{{favorites.length}}<span>Images</span></li>
-        <li>298<span>Events</span></li>
+        <li>{{events.length}}<span>Events</span></li>
       </ul>
     </div>
+  </div>
+  <div class="events">
+    <div class="eventsImgWrap">
+      <img src="../img/sun.png" alt="sun" />
+      <img src="../img/moon.png" alt="moon" id="moon"/>
+    </div>
+    <div class="foo">
+      <ul>
+        <span>Sun:</span>
+        <li>r: {{events[0].time}}</li>
+        <li>s: {{events[1].time}}</li>
+        <span>Moon:</span>
+        <li>r: {{events[4].time}}</li>
+        <li>s: {{events[5].time}}</li>
+        <ul>
+          <span>Current Phase:</span>
+          <li>{{events[2]}}</li>
+          <span>Next Phase:</span>
+          <li>{{events[3].phase}}</li>
+        </ul>
+      </ul>
+    </div>
+    <!-- <div class="eventsImgWrap2">
+      <img src="../img/galaxy.png" alt="galaxy" />
+      <img src="../img/galaxy2.png" alt="galaxy2" />
+    </div> -->
   </div>
   <div class="imgListWrap">
     <div class="imgList" >

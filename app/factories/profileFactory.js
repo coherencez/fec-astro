@@ -35,10 +35,41 @@ app.factory('profileFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FB
     return picArray;
   };
 
+// data scraping test for astronomical events//having cors issue
+  const getEvents = () => {
+    return $q((resolve, reject) => {
+      $http.get('http://in-the-sky.org/newscal.php?month=8&year=2016&maxdiff=7#datesel')
+      .success((dataObject) => {
+        resolve(dataObject);
+      })
+      .error((error) => {
+        reject(error);
+      });
+    });
+  };
+
+  const getSunMoonPhases = () => {
+    let date = new Date(),
+        day = date.getDate(),
+        month = date.getMonth() + 1,
+        year = date.getFullYear(),
+        queryString = `http://api.usno.navy.mil/rstt/oneday?date=${month}/${day}/${year}&loc=Nashville, TN`;
+    return $q((resolve, reject) => {
+      $http.get(queryString)
+      .success((dataObject) => {
+        resolve(dataObject);
+      })
+      .error((error) => {
+        reject(error);
+      });
+    });
+  };
+
 
 
   return {
-    getPictureObj, addToFavoritesList, getFavorites, deleteFromFavorites, assignFavId, addToProfile, getFromFav
+    getPictureObj, addToFavoritesList, getFavorites, deleteFromFavorites, assignFavId, addToProfile, getFromFav,
+    getEvents, getSunMoonPhases
   };
 
 }]);

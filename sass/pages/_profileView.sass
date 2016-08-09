@@ -1,6 +1,55 @@
 .profileViewWrap
   @include outer-container
 
+  .events
+    @include span-columns(3)
+    @include shift(1)
+    background: lighten($primary-bg-color, 10%)
+    position: absolute
+    top: 40%
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+    height: 50vh
+    text-align: justify
+    line-height: 1.5em
+    padding: 1%
+    overflow: hidden
+    overflow-y: scroll
+
+    .eventsImgWrap
+      width: 21%
+      display: flex
+      justify-content: space-between
+      position: fixed
+
+      img
+        height: 45px
+        width: 45px
+
+    .eventsImgWrap2
+      width: 21%
+      display: flex
+      justify-content: space-between
+      position: fixed
+      bottom: 50px
+
+      img
+        height: 45px
+        width: 45px
+    .foo
+      margin-top: 20%
+
+    ul
+      list-style: none
+      padding-left: 20%
+
+      li
+        line-height: 1.5em
+
+    span
+      font-size: .8em
+      font-weight: 600
+      padding: 0
+
   .profile
     @include span-columns(3)
     @include shift(1)
