@@ -14,6 +14,8 @@ app.controller('navCtrl', ['$scope', '$route', 'authFactory', '$rootScope', '$lo
 			 $route.reload();
 			 console.log(authFactory.getUser(), "Logged out");
 			 authFactory.setUser(null);
+       authFactory.setUserProfReference(null);
+       console.log(authFactory.getUserObjRef(), "Object ref out");
 		 }, function(error) {
 			 // An error happened.
 			 console.log(error);

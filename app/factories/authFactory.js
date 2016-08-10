@@ -2,7 +2,8 @@
 
 app.factory('authFactory', [function () {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
-  let currentUserId = null;
+  let currentUserId = null,
+      userProfileObjReference = null;
 
   //Auth function that takes in a generic provided (so it works with email or google eventually)
   const authWithProvider = function(provider) {
@@ -13,17 +14,26 @@ app.factory('authFactory', [function () {
   const userState = function() {
     return (currentUserId) ? true : false;
   };
-  window.userState = userState;
+
 
   //getUser function returns current userId
   const getUser = function() {
     return currentUserId;
   };
-  window.getUser = getUser;
+
+  const getUserObjRef = function() {
+    return userProfileObjReference;
+  };
+
 
   const setUser = function(id) {
     currentUserId = id;
     // console.log(currentUserId, "currentUserId")
+  };
+
+  const setUserProfReference = function(userObjRef) {
+    userProfileObjReference = userObjRef;
+    console.log(userProfileObjReference, "obj reference")
   };
 
   const createWithEmail = function (email, password) {
@@ -47,8 +57,19 @@ app.factory('authFactory', [function () {
     });
   };
 
+  const createUserProfile = userObj => firebase.database().ref('profile').push(userObj);
+
+  const getProfile = (uid) => {
+          return firebase.database()
+                  .ref(`profile`)
+                  .orderByChild('uid')
+                  .equalTo(uid)
+                  .once('value');
+  };
+
   return {
-    authWithProvider, userState, getUser, setUser, googleProvider, createWithEmail, authWithEmail
+    authWithProvider, userState, getUser, setUser, googleProvider, createWithEmail, authWithEmail, createUserProfile,
+    getUserObjRef, setUserProfReference, getProfile
   };
 
 }]);

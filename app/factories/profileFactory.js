@@ -6,7 +6,11 @@ app.factory('profileFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FB
   const getPictureObj = picId => firebase.database().ref(`pictures/${picId}`).once('value');
   const getFromFav = picId => firebase.database().ref(`favorites/${picId}`).once('value');
   const addToFavoritesList = newPic => firebase.database().ref('favorites').push(newPic);
-  const addToProfile = newPic => firebase.database().ref('profile').push(newPic);
+  const addToProfile = (avatarObj, objRef) => {
+    firebase.database()
+      .ref(`profile/${objRef}`)
+      .update(avatarObj);
+  };
 
   const deleteFromFavorites = favId => firebase.database().ref(`favorites/${favId}`).remove();
 
@@ -24,6 +28,23 @@ app.factory('profileFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FB
         callback(pictureData.val());
       });
   };
+
+  const getProfile = (callback, objRef) => {
+   firebase.database()
+    .ref(`profile/${objRef}`)
+    .on('value', (pictureData) => {
+        callback(pictureData.val());
+      });
+  };
+  // const getProfile = (callback, userID) => {
+  //  firebase.database()
+  //   .ref('profile')
+  //   .orderByChild('uid')
+  //   .equalTo(userID)
+  //   .on('value', (pictureData) => {
+  //       callback(pictureData.val());
+  //     });
+  // };
 
   const assignFavId = (dataList) => {
     let picArray = [];
@@ -69,7 +90,7 @@ app.factory('profileFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FB
 
   return {
     getPictureObj, addToFavoritesList, getFavorites, deleteFromFavorites, assignFavId, addToProfile, getFromFav,
-    getEvents, getSunMoonPhases
+    getEvents, getSunMoonPhases, getProfile
   };
 
 }]);

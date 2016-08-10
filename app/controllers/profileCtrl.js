@@ -2,10 +2,17 @@
 
 app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$window', '$location', function($scope, proFac, af, $window, $location) {
   const userid = af.getUser();
+  const objRef = af.getUserObjRef();
   $scope.profPic = null;
 
   const date = new Date().toString();
   $scope.dateArr = date.split(' '); // split date string into array for nice formatting in DOM
+
+  $scope.log = (data) => {
+    console.log('test', data)
+    $scope.profPic = data;
+  };
+  proFac.getProfile($scope.log, objRef)
 
   $scope.dropDown = function (e) {
       let $favImg = $(e.currentTarget.parentNode.parentNode.parentNode.children[0]),
@@ -37,17 +44,17 @@ app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$windo
   $scope.setProfilePic = (picid) => {
     proFac.getFromFav(picid)
     .then((result) => {
-      let newObj = result.val();
-      $scope.profPic = newObj;
-      $location.url('/profile');
-      $scope.$apply();
-      //     newObj.favid = picid;
-      // proFac.addToProfile(newObj)
+      let returnObj = result.val(),
+          newObj = {};
+      newObj.url = returnObj.url;
+      newObj.picKey = returnObj.picKey;
+      newObj.favid = picid;
+      proFac.addToProfile(newObj, objRef)
     });
   };
 
 // data scraping attempt
-  $scope.logEvents = (data) => {console.log('hello',data)};
+  // $scope.logEvents = (data) => {console.log('hello',data)};
   // proFac.getEvents($scope.logEvents, $scope.logEvents);
 
 // sun and moon phases
@@ -55,7 +62,7 @@ app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$windo
     .then((data) => {
       let phasesArr = [];
       $scope.events = [];
-      console.log('sun and moon phases:',data);
+      // console.log('sun and moon phases:',data);
       angular.forEach(data.sundata, (v, i) => {
         phasesArr.push(v);
       })
@@ -67,7 +74,7 @@ app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$windo
       })
       $scope.events.splice(2, 0, data.curphase)
       $scope.events.splice(3, 0, data.closestphase)
-      console.log('events array:', $scope.events);
+      // console.log('events array:', $scope.events);
     });
 
 }]);
