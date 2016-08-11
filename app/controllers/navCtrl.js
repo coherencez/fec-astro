@@ -11,11 +11,11 @@ app.controller('navCtrl', ['$scope', '$route', 'authFactory', '$rootScope', '$lo
 		 firebase.auth().signOut()
 		 .then(function() {
 			 // Sign-out successful.
-			 $route.reload();
 			 console.log(authFactory.getUser(), "Logged out");
 			 authFactory.setUser(null);
        authFactory.setUserProfReference(null);
-       console.log(authFactory.getUserObjRef(), "Object ref out");
+       console.log(authFactory.getUserObjRef(), "object ref out");
+       $route.reload();
 		 }, function(error) {
 			 // An error happened.
 			 console.log(error);

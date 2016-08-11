@@ -8,15 +8,15 @@ app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$windo
   const date = new Date().toString();
   $scope.dateArr = date.split(' '); // split date string into array for nice formatting in DOM
 
-  $scope.log = (data) => {
-    console.log('test', data)
+  $scope.loadProfilePic = (data) => {
+    console.log('prof pic loaded:', data)
     $scope.profPic = data;
     // casuing $digest in prog error
-    $location.url('/profile');
-    $scope.$apply();
+    // $location.url('/profile');
+    // $scope.$apply();
     // $route.reload // causes an infinite loop
   };
-  proFac.getProfile($scope.log, objRef)
+  proFac.getProfile($scope.loadProfilePic, objRef)
 
   $scope.dropDown = function (e) {
       let $favImg = $(e.currentTarget.parentNode.parentNode.parentNode.children[0]),
@@ -53,7 +53,7 @@ app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$windo
       newObj.url = returnObj.url;
       newObj.picKey = returnObj.picKey;
       newObj.favid = picid;
-      proFac.addToProfile(newObj, objRef)
+      if (objRef !== null) proFac.addToProfile(newObj, objRef);
     });
   };
 

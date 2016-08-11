@@ -36,6 +36,7 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
 
   $scope.createUserFavObj = (fbId, $event) => {
       $event.stopPropagation();
+      if (af.userState()) {
       proFac.getPictureObj(fbId)
       .then( (result) => {
         // assign each fav obj UID and unique key value for reference later
@@ -47,6 +48,9 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
           console.log('new picture:', newObj, 'loaded to user:', newObj.uid, '\'s profile');
         }
       });
+    } else {
+      alert('Please login or sign up for this functionality!');
+    }
   };
 
   $scope.showInfoCard = function (e) {
