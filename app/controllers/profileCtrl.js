@@ -11,6 +11,10 @@ app.controller('profileCtrl', ['$scope','profileFactory', 'authFactory', '$windo
   $scope.log = (data) => {
     console.log('test', data)
     $scope.profPic = data;
+    // casuing $digest in prog error
+    $location.url('/profile');
+    $scope.$apply();
+    // $route.reload // causes an infinite loop
   };
   proFac.getProfile($scope.log, objRef)
 

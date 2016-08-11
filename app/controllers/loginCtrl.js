@@ -30,8 +30,8 @@ app.controller('loginCtrl', ['$scope', '$route', 'authFactory', function($scope,
       .then((result) => {
         console.log('obj reference', result.path.o[1])
         af.setUserProfReference(result.path.o[1])
+        $route.reload();
       });
-      $route.reload();
     })
     .catch((err) => console.log(err));
   };
@@ -43,8 +43,8 @@ app.controller('loginCtrl', ['$scope', '$route', 'authFactory', function($scope,
         .then((result) => {
           console.log('profile', Object.keys(result.val())[0] )
           af.setUserProfReference(Object.keys(result.val())[0]);
+          $route.reload()
         })
-      $route.reload()
     })
     .catch((err) => console.log(err));
   };
