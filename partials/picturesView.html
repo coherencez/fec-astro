@@ -1,4 +1,4 @@
-<button type="button" name="morepics" data-ng-click="reload()">More Pictures</button>
+<button type="button" name="morepics" data-ng-click="reload()" class="pictureViewButtons" id="pv1"><< More Pictures</button>
 <div class="cards">
   <div class="card" data-ng-repeat="x in pictures | limitTo:numOfPics | filter: searchText.search track by $index" data-ng-click="clicky(x.hdurl)">
     <div class="card-image">
@@ -11,15 +11,16 @@
       <p>&copy;&nbsp;{{x.copyright ? x.copyright : 'public domain'}}&nbsp;&nbsp;{{x.date}}</p>
     </div>
     <div class="imgInfo">
-      <button name="favorite" data-ng-click="createUserFavObj(x.id, $event)" class="loginButton"><i class="fa fa-star-o" aria-hidden="true"></i></button>
-      <button name="info" data-ng-click="showInfoCard($event)" class="signUpButton"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+      <button name="favorite" data-ng-click="createUserFavObj(x.id, $event)" class="pictureViewButtons"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+      <button name="info" data-ng-click="showInfoCard($event)" class="pictureViewButtons"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card infoCard hidden">
       <p>&copy;&nbsp;{{x.copyright ? x.copyright : 'public domain'}}&nbsp;&nbsp;{{x.date}}</p>
-      {{x.explanation}}
+      <p>{{x.explanation}}</p>
     </div>
   </div>
 </div>
+<button type="button" name="morepics" data-ng-click="reload()" class="pictureViewButtons" id="pv2"><< More Pictures</button>
 
 
 
