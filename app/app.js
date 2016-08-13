@@ -9,6 +9,14 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl: '/partials/defaultView.html',
       controller: 'defaultCtrl'
     })
+    .when('/welcome', {
+      templateUrl: '/partials/welcome.html'
+      // controller: 'defaultCtrl'
+    })
+    .when('/weather', {
+      templateUrl: '/partials/weather.html'
+      controller: 'weatherCtrl'
+    })
     .when('/pictures', {
       templateUrl: 'partials/picturesView.html',
       controller: 'picturesCtrl'

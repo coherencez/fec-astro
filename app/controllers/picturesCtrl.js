@@ -57,7 +57,6 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
     e.stopPropagation();
     $(e.path[3].children[4]).toggleClass('hidden');
     $(e.path[3].children[2]).toggleClass('hidden');
-    console.log(e.path[3].children[2]);
   };
 
   $scope.reload = () => {$route.reload()};

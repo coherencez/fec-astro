@@ -90,7 +90,7 @@ app.run(["$location", "FBCreds", "authFactory", function ($location, FBCreds, au
       $location.url("/profile");
     } else {
       authFactory.setUser(null); //this is to rest the current user to hide board.
-      $location.url("/splash");
+      $location.url("/welcome");
     }
   });
 }]);
