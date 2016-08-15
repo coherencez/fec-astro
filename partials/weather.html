@@ -1,0 +1,50 @@
+<div class="row">
+
+  <div class="loginDisplay fade" data-ng-show="inputBool">
+    <header class="loginHeader">
+      <h3>Please enter your zip code below to get the current weather for your area</h3>
+    </header>
+    <span class="input input--kuro loginInputs">
+			<input class="input__field input__field--kuro" type="text" id="input-7" required data-ng-model="zip"/>
+			<label class="input__label input__label--kuro" for="input-7">
+				<span class="input__label-content input__label-content--kuro">Zip code:</span>
+			</label>
+		</span>
+    <h4>Choose your preferred unit of measure:</h4>
+    <div class="radioGroup">
+      <label for="unitOfMeasure1">Metric&nbsp;
+        <input type="radio" name="unitOfMeasure" value="metric" id="unitOfMeasure1" data-ng-model="unitOfMeasure"/>
+      </label>
+      &nbsp;&nbsp;&nbsp;
+      <label for="unitOfMeasure2">Imperial&nbsp;
+        <input type="radio" name="unitOfMeasure" value="imperial" id="unitOfMeasure2"data-ng-model="unitOfMeasure"/>
+      </label>
+    </div>
+    <div class="buttonGroup">
+      <button type="button" name="loadWeather" data-ng-click="getWeather()" class="pictureViewButtons">Load Weather</button>
+    </div>
+  </div>
+
+  <div class="weatherBox" data-ng-show="!inputBool">
+    <div class="flexHeader">
+      <div class="cityInfo">
+        <h3>{{weatherData.name}}</h3>
+        <span class="hiLo">H:&nbsp;&nbsp;{{weatherData.main.temp_min}}&deg; &nbsp; / &nbsp; L:&nbsp;&nbsp;{{weatherData.main.temp_max}}&deg;</span>
+      </div>
+      <div class="currentTemp">
+        <p>{{weatherData.main.temp.toFixed(0)}}&deg;</p>
+      </div>
+    </div>
+
+    <div class="weatherInfo">
+      <ul>
+        <li><h5>Cloud Coverage:</h5> <p>{{weatherData.clouds.all}}%</p></li>
+        <li><h5>Weather:</h5> <p>{{weatherData.weather[0].description}}</p></li>
+        <li><h5>Wind Speed:</h5> <p>{{weatherData.wind.speed}} knots</p></li>
+        <li><h5>Humidity:</h5> <p>{{weatherData.main.humidity}}%</p></li>
+        <li><h5>Bar Pressure:</h5> <p>{{weatherData.main.pressure}}&nbsp;hPa<span class="pressureInfo">(~1013hPa = 1 Atmosphere)</span></p></li>
+      </ul>
+    </div>
+  </div>
+
+</div>

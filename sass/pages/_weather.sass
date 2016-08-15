@@ -1,0 +1,47 @@
+.radioGroup
+  display: flex
+  justify-content: center
+
+.buttonGroup
+  margin: 5%
+
+.weatherBox
+  @include span-columns(4)
+  @include shift(4)
+  background: lighten($primary-bg-color, 10%)
+  color: darken($primary-color, 10%)
+
+  .flexHeader
+    display: flex
+    flex-flow: row nowrap
+    justify-content: space-between
+    text-align: center
+
+    .hiLo
+      font-size: .75em
+      font-weight: 500
+
+    .currentTemp
+      font-size: 1.8em
+      margin: auto
+
+    .cityInfo
+      margin: auto
+
+  .weatherInfo
+
+    ul
+      padding-left: 5%
+      list-style: none
+      line-height: 1em
+
+      h5
+        font-size: .8em
+
+      p
+        font-size: 1.3em
+        margin: 0 auto
+
+      .pressureInfo
+        display: block
+        font-size: .5em

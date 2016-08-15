@@ -2,9 +2,12 @@
 
 app.factory('weatherFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FBCreds) {
 
-  const getPOTD = () => {
+  const getCurrentWeather = (city, unit) => {
+    let apiKey = FBCreds.openWeatherApiKey,
+        cityZip = city,
+        unitOfMeasure = unit;
     return $q((resolve, reject) => {
-      $http.get(`https://api.nasa.gov/planetary/apod?concept_tags=true&api_key=${FBCreds.nasaApiKey}`)
+      $http.get(`http://api.openweathermap.org/data/2.5/weather?zip=${cityZip},us&units=${unitOfMeasure}&APPID=${apiKey}`)
         .success((dataObject) => {
           resolve(dataObject);
         })
@@ -16,7 +19,7 @@ app.factory('weatherFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FB
 
 
   return {
-    getPOTD
+    getCurrentWeather
   };
 
 }]);
