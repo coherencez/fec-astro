@@ -2,7 +2,7 @@
   <header class="navigation" role="banner">
     <div class="navigation-wrapper">
       <a href="javascript:void(0)" class="logo" class="logo" data-ng-href="#/splash">
-        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo Image">
+        <img data-ng-src="http://apod.nasa.gov/apod/image/1410/helix_blancoHubble_1080.jpg" alt="Logo Image">
       </a>
       <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">NAV()</a>
       <nav role="navigation">
@@ -14,7 +14,7 @@
           <li id="js-navigation-more" class="nav-link more"><a href="javascript:void(0)">More</a>
             <ul class="submenu">
               <li><a href="javascript:void(0)" data-ng-href="#/splash">POTD</a></li>
-              <li><a href="javascript:void(0)">Another Item</a></li>
+              <li><a href="javascript:void(0)" data-ng-href="#/weather">Weather</a></li>
               <li class="more"><a href="javascript:void(0)">Item with submenu</a>
                 <ul class="submenu">
                   <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
@@ -34,7 +34,7 @@
       <div class="navigation-tools">
         <div class="search-bar">
           <form role="search">
-            <input type="search" placeholder="Enter Search" />
+            <input type="search" placeholder="Enter Search" data-ng-model="searchText.search"/>
             <button type="submit">
               <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon">
             </button>

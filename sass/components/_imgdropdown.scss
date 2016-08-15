@@ -32,7 +32,7 @@
   }
 
   .expander-content p {
-    color: $base-font-color;
+    color: darken($primary-color, 10%);
     line-height: $base-line-height;
   }
 

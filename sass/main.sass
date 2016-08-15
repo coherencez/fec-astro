@@ -1,23 +1,28 @@
-@import 'lib'
-@import 'animate'
+@import 'lib/lib'
+
 @import 'components/inputs'
 @import 'components/blackNav'
+@import 'components/fact'
+@import 'components/buttons'
 
-@import 'components/footer'
+@import 'pages/welcome'
+@import 'pages/weather'
 
-@import 'components/login'
+@import 'pages/login'
 
-@import 'components/default'
+@import 'pages/default'
 
-@import 'components/hoverTile'
-@import 'components/pictureView'
+@import 'components/imgdropdown'
+@import 'components/pictureCard'
+@import 'pages/pictureView'
 
 @import 'components/profileStats'
-@import 'components/imgdropdown'
-@import 'components/profileView'
+@import 'pages/profileView'
 @import 'components/searchBox'
 
 body
   background: rgba(0, 0, 0, .75)
   color: $primary-color
   margin-top: 10%
+  .hidden
+    display: none

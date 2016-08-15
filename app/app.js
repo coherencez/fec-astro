@@ -9,6 +9,13 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl: '/partials/defaultView.html',
       controller: 'defaultCtrl'
     })
+    .when('/welcome', {
+      templateUrl: '/partials/welcome.html'
+    })
+    .when('/weather', {
+      templateUrl: '/partials/weather.html',
+      controller: 'weatherCtrl'
+    })
     .when('/pictures', {
       templateUrl: 'partials/picturesView.html',
       controller: 'picturesCtrl'
@@ -21,4 +28,5 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl: 'partials/loginView.html',
       controller: 'loginCtrl'
     })
+
 }]);

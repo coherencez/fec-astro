@@ -4,7 +4,13 @@ app.factory('profileFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FB
 
 // adding favorites to firebase section
   const getPictureObj = picId => firebase.database().ref(`pictures/${picId}`).once('value');
+  const getFromFav = picId => firebase.database().ref(`favorites/${picId}`).once('value');
   const addToFavoritesList = newPic => firebase.database().ref('favorites').push(newPic);
+  const addToProfile = (avatarObj, objRef) => {
+    firebase.database()
+      .ref(`profile/${objRef}`)
+      .update(avatarObj);
+  };
 
   const deleteFromFavorites = favId => firebase.database().ref(`favorites/${favId}`).remove();
 
@@ -23,6 +29,23 @@ app.factory('profileFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FB
       });
   };
 
+  const getProfile = (callback, objRef) => {
+   firebase.database()
+    .ref(`profile/${objRef}`)
+    .on('value', (pictureData) => {
+        callback(pictureData.val());
+      });
+  };
+  // const getProfile = (callback, userID) => {
+  //  firebase.database()
+  //   .ref('profile')
+  //   .orderByChild('uid')
+  //   .equalTo(userID)
+  //   .on('value', (pictureData) => {
+  //       callback(pictureData.val());
+  //     });
+  // };
+
   const assignFavId = (dataList) => {
     let picArray = [];
     let picList = dataList;
@@ -33,10 +56,41 @@ app.factory('profileFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FB
     return picArray;
   };
 
+// data scraping test for astronomical events//having cors issue
+  const getEvents = () => {
+    return $q((resolve, reject) => {
+      $http.get('http://in-the-sky.org/newscal.php?month=8&year=2016&maxdiff=7#datesel')
+      .success((dataObject) => {
+        resolve(dataObject);
+      })
+      .error((error) => {
+        reject(error);
+      });
+    });
+  };
+
+  const getSunMoonPhases = () => {
+    let date = new Date(),
+        day = date.getDate(),
+        month = date.getMonth() + 1,
+        year = date.getFullYear(),
+        queryString = `http://api.usno.navy.mil/rstt/oneday?date=${month}/${day}/${year}&loc=Nashville, TN`;
+    return $q((resolve, reject) => {
+      $http.get(queryString)
+      .success((dataObject) => {
+        resolve(dataObject);
+      })
+      .error((error) => {
+        reject(error);
+      });
+    });
+  };
+
 
 
   return {
-    getPictureObj, addToFavoritesList, getFavorites, deleteFromFavorites, assignFavId
+    getPictureObj, addToFavoritesList, getFavorites, deleteFromFavorites, assignFavId, addToProfile, getFromFav,
+    getEvents, getSunMoonPhases, getProfile
   };
 
 }]);

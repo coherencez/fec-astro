@@ -1,0 +1,17 @@
+.welcomeWrap
+  @include outer-container
+
+  .welcome
+    @include span-columns(6)
+    @include shift(3)
+    text-align: center
+    color: darken($primary-color, 10%)
+    line-height: 1.5em
+    font-weight: 600
+    text-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+
+    a
+      color: lighten($primary-bg-color, 40%)
+      text-decoration: none
+    a:hover
+      color: lighten($primary-bg-color, 20%)

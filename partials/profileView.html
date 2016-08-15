@@ -1,34 +1,60 @@
+<div data-ng-include="'partials/fact.html'"></div>
+
 <section class="profileViewWrap">
   <div class="profile">
     <div class="profileImgWrap">
-      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
+      <img on-init data="profPic" data-ng-src="{{profPic.url}}" alt="Select from favorites list">
+    </div>
+    <div class="dateStamp">
+      <span class="dayOfWeek">{{ dateArr[0] }}</span>
+      <span class="day">{{ dateArr[2] }}</span>
+      <span class="month">{{ dateArr[1] }}</span>
+      <span class="year">{{ dateArr[3] }}</span>
     </div>
     <div class="stats">
       <ul>
         <li>{{favorites.length}}<span>Images</span></li>
-        <li>298<span>Events</span></li>
+        <li>{{events.length}}<span>Events</span></li>
       </ul>
     </div>
   </div>
+  <div class="events">
+    <div class="eventsImgWrap">
+      <img src="../img/sun.png" alt="sun" />
+      <img src="../img/moon.png" alt="moon" id="moon"/>
+    </div>
+    <div class="foo">
+      <ul>
+        <span>Sun:</span>
+        <li>r: {{events[0].time}}</li>
+        <li>s: {{events[1].time}}</li>
+        <span>Moon:</span>
+        <li>r: {{events[4].time}}</li>
+        <li>s: {{events[5].time}}</li>
+        <ul>
+          <span>Current Phase:</span>
+          <li>{{events[2]}}</li>
+          <span>Next Phase:</span>
+          <li>{{events[3].phase}}</li>
+        </ul>
+      </ul>
+    </div>
+    <!-- <div class="eventsImgWrap2">
+      <img src="../img/galaxy.png" alt="galaxy" />
+      <img src="../img/galaxy2.png" alt="galaxy2" />
+    </div> -->
+  </div>
   <div class="imgListWrap">
-    <header class="imgListHeader">
-      <form class="search-bar" role="search">
-        <input type="search" placeholder="Enter Search" data-ng-model="search"/>
-        <button type="submit">
-          <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon-black.png" alt="Search Icon">
-        </button>
-      </form>
-    </header>
     <div class="imgList" >
       <!-- dynamic list items -->
-      <section class="imgListItem" data-ng-repeat="x in favorites | filter: search">
+      <section class="imgListItem" data-ng-repeat="x in favorites | filter: searchText.search track by x.favId">
         <div class="imgWrap">
-          <img data-ng-src="{{x.url}}" data-ng-click="hdUrl(x.hdurl)" alt="Hello title here" style="cursor: pointer"/>
+          <img data-ng-src="{{x.url}}" data-ng-click="hdUrl(x.hdurl)" alt="probably outer space" style="cursor: pointer"/>
         </div>
         <div class="favInfo">
           <h3>{{x.title}}</h3>
           <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden" data-ng-click="dropDown($event)">Info</a>
+            <a href="javascript:void(0)" class="expander-trigger expander-hidden info" data-ng-click="dropDown($event)">Info</a>
             <div class="expander-content">
               <p>&copy;&nbsp;{{x.copyright ? x.copyright : 'public domain'}}</p>
               <p>{{x.date}}</p>
@@ -37,8 +63,8 @@
           </div>
         </div>
         <div class="buttonGroup">
-          <button type="button" name="edit" data-uid="{{x.uid}}" data-key="{{x.key}}">Edit</button>
-          <button type="button" name="delete" data-uid="{{x.uid}}" data-key="{{x.key}}" data-ng-click="deleteFavorite(x.favId)">X</button>
+          <button type="button" name="delete" data-ng-click="deleteFavorite(x.favId)" class="deleteButton">X</button>
+          <button type="button" name="edit" data-ng-click="setProfilePic(x.favId)"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
         </div>
       </section>
 

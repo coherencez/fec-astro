@@ -1,0 +1,143 @@
+.profileViewWrap
+  @include outer-container
+
+  .events
+    @include span-columns(3)
+    @include shift(1)
+    background: lighten($primary-bg-color, 10%)
+    position: absolute
+    top: 45%
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+    height: 50vh
+    text-align: center
+    line-height: 1.5em
+    padding: 1%
+    overflow: hidden
+    overflow-y: scroll
+
+    .eventsImgWrap
+      width: 21%
+      display: flex
+      justify-content: space-between
+      position: fixed
+
+      img
+        height: 45px
+        width: 45px
+
+    .eventsImgWrap2
+      width: 21%
+      display: flex
+      justify-content: space-between
+      position: fixed
+      bottom: 50px
+
+      img
+        height: 45px
+        width: 45px
+    .foo
+      margin-top: 10%
+
+    ul
+      list-style: none
+      padding: 5%
+
+      li
+        line-height: 1.5em
+        font-style: italic
+
+    span
+      font-size: 1em
+      font-weight: 600
+      padding: 0
+
+  .profile
+    @include span-columns(3)
+    @include shift(1)
+    background: lighten($primary-bg-color, 10%)
+    position: absolute
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+
+    .profileImgWrap
+      height: 85px
+      width: 85px
+
+      img
+        height: 100%
+        width: 100%
+
+    .dateStamp
+      float: right
+      position: absolute
+      top: 0
+      right: 10px
+
+      .dayOfWeek
+        font-size: .7em
+        position: absolute
+        top: 10px
+
+      .day
+        font-size: 2em
+        display: block
+        text-align: right
+
+  .imgListWrap
+    @include span-columns(7)
+    margin-left: 35%
+    position: fixed
+
+    .imgList
+      overflow: hidden
+      overflow-y: scroll
+      height: 75vh
+
+    .imgListHeader
+      height: 55px
+      border-bottom: 3px solid $primary-border-color
+      text-align: center
+      margin-top: 2%
+
+      .search-bar
+        width: 50%
+        margin: 0 auto
+
+    .imgListItem
+      display: flex
+      flex-flow: row nowrap
+      justify-content: space-between
+      background: lighten($primary-bg-color, 10%)
+      border: 1px solid white
+      color: darken($primary-color, 10%)
+      width: 95%
+      margin: 0 auto 5% auto
+      padding: 0 1%
+      box-shadow: 0 10px 20px rgba(255,255,255,0.19), 0 6px 6px rgba(255,255,255,0.23)
+
+      .imgWrap
+        height: 79px
+        width: 79px
+        margin: auto 0
+
+        img
+          height: 79px
+          width: 79px
+
+      .favInfo
+        width: 100%
+        text-align: justify
+        margin: 0 auto
+        padding-left: 5%
+
+        .info
+
+      .buttonGroup
+        margin: auto 0
+        width: 25%
+
+        button
+          display: inline-block
+          float: right
+
+
+        .deleteButton
