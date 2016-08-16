@@ -2,12 +2,23 @@
 
 app.factory('locateFromSpaceFactory', ['$q', '$http', 'FBCreds', function ($q, $http, FBCreds) {
 
-  const getCurrentWeather = (city, unit) => {
+  const getLongLat = (city) => {
     let apiKey = FBCreds.openWeatherApiKey,
-        cityZip = city,
-        unitOfMeasure = unit;
+        cityZip = city;
     return $q((resolve, reject) => {
-      $http.get(`http://api.openweathermap.org/data/2.5/weather?zip=${cityZip},us&units=${unitOfMeasure}&APPID=${apiKey}`)
+      $http.get(`http://api.openweathermap.org/data/2.5/weather?zip=${cityZip},us&APPID=${apiKey}`)
+        .success((dataObject) => {
+          resolve(dataObject);
+        })
+        .error((error) => {
+          reject(error);
+        });
+    });
+  };
+
+  const getImgFromSpace = (lon, lat, date) => {
+    return $q((resolve, reject) => {
+      $http.get(`https://api.nasa.gov/planetary/earth/imagery?lon=${lon}&lat=${lat}&date=${date}&cloud_score=True&api_key=DEMO_KEY`)
         .success((dataObject) => {
           resolve(dataObject);
         })
@@ -19,7 +30,7 @@ app.factory('locateFromSpaceFactory', ['$q', '$http', 'FBCreds', function ($q, $
 
 
   return {
-    getCurrentWeather
+    getLongLat, getImgFromSpace
   };
 
 }]);

@@ -1,0 +1,23 @@
+.imgBox
+  @include span-columns(6)
+  @include shift(3)
+  background: lighten($primary-bg-color, 10%)
+  color: darken($primary-color, 10%)
+
+  .flexHeader
+    display: flex
+    flex-flow: row nowrap
+    justify-content: space-between
+    text-align: center
+
+  img
+    height: 100%
+    width: 100%
+
+  a
+    color: darken($primary-color, 10%)
+    text-decoration: none
+    font-weight: 600
+
+  a:hover
+    color: darken($primary-color, 50%)
