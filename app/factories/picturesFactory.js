@@ -34,7 +34,7 @@ app.factory('picturesFactory', ['$q', '$http', 'FBCreds', function ($q, $http, F
 
 				dateArray.push(dateObj);
         // call getRandomDates until counter reaches 10 (10 dates === 10 pictures)
-				if (counter === 10) {
+				if (counter === 40) {
 					return;
 				}
 				counter++;

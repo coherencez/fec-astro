@@ -6,17 +6,17 @@ app.controller('picturesCtrl', ['$scope', 'picturesFactory', '$window', 'authFac
   $scope.numOfPics = 24;
 
 // add 10 random photos to firebase DB from NASA APOD
-  // pf.clearArrays();
-  // pf.getRandomDates();
-  // angular.forEach(pf.dateArray, (v, i) => {
-  //   pf.getPicsForFirebase(v)
-  //     .then(data => pf.fillImgArray(data))
-  // });
-  // setTimeout(() => {
-  //   angular.forEach(pf.imgArray, (v,i) => {
-  //     pf.addToPictureList(v);
-  //   })
-  // }, 500);
+  pf.clearArrays();
+  pf.getRandomDates();
+  angular.forEach(pf.dateArray, (v, i) => {
+    pf.getPicsForFirebase(v)
+      .then(data => pf.fillImgArray(data))
+  });
+  setTimeout(() => {
+    angular.forEach(pf.imgArray, (v,i) => {
+      pf.addToPictureList(v);
+    })
+  }, 500);
 // end random photos block
 
   // set $scope.pictures to pics loaded from firebase after getting a uid assigned

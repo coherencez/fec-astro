@@ -1,0 +1,37 @@
+<div class="row">
+
+  <div class="loginDisplay fade" data-ng-show="inputBool">
+    <header class="loginHeader">
+      <h3>Enter your zip code to see your house from space!</h3>
+    </header>
+    <span class="input input--kuro loginInputs">
+			<input class="input__field input__field--kuro" type="text" id="input-7" required data-ng-model="zip"/>
+			<label class="input__label input__label--kuro" for="input-7">
+				<span class="input__label-content input__label-content--kuro">Zip code:</span>
+			</label>
+		</span>
+    <div class="buttonGroup">
+      <button type="button" name="loadWeather" data-ng-click="getImgFromSpace()" class="pictureViewButtons">Load Image From Space!</button>
+    </div>
+  </div>
+
+  <div class="imgBox" data-ng-show="!inputBool">
+    <div class="flexHeader">
+      <div class="cityInfo">
+        <h3>{{spaceImg.date}}</h3>
+      </div>
+      <div class="currentTemp">
+        <p>Cloud coverage:&nbsp;{{ (spaceImg.cloud_score * 100).toFixed(2) }}%</p>
+      </div>
+    </div>
+
+    <div class="weatherInfo">
+      <img data-ng-src="{{spaceImg.url}}" alt="probably earth" />
+    </div>
+
+    <div class="buttonGroup">
+      <a ng-href="http://earthobservatory.nasa.gov/Features/LandsatBigData/" target="_blank">How does it work?</a>
+    </div>
+  </div>
+
+</div>
