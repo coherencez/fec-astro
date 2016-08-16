@@ -16,6 +16,10 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl: '/partials/weather.html',
       controller: 'weatherCtrl'
     })
+    .when('/locate', {
+      templateUrl: '/partials/locateFromSpace.html',
+      controller: 'locateFromSpaceCtrl'
+    })
     .when('/pictures', {
       templateUrl: 'partials/picturesView.html',
       controller: 'picturesCtrl'
